@@ -1,3 +1,5 @@
+@import "./mixins";
+
 * {
   margin: 0;
   padding: 0;
@@ -8,4 +10,151 @@ html {
 }
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+main {
+  position: relative;
+  // HOME PAGE STYLING
+  & #home {
+    position: relative;
+
+    & header {
+      background-color: white;
+      padding: 4rem 0rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      position: relative;
+      box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem,
+        rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem;
+      & h1 {
+        font-size: 3rem;
+      }
+      & .form-control {
+        & input {
+          border: none;
+          outline: none;
+          padding: 0.2rem 0.5rem;
+          border-bottom: 0.2rem solid darkgray;
+        }
+      }
+      & .add-user {
+        position: absolute;
+        left: 15%;
+        bottom: -20%;
+        z-index: 2;
+        & .react-icon {
+          font-size: 6rem;
+          color: rgb(0, 0, 199);
+          cursor: pointer;
+        }
+      }
+    }
+    & .container {
+      width: 100%;
+      height: 70rem;
+      background-color: #fbfbfb;
+      padding: 8rem 12rem;
+      & .container-header h4:nth-child(1) {
+        justify-self: flex-start;
+      }
+      & .container-header h4:nth-child(4) {
+        justify-self: flex-end;
+      }
+      & .container-header {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        align-items: center;
+        justify-items: center;
+        border-bottom: 0.25rem darkgray solid;
+        padding-bottom: 2rem;
+        & h4 {
+          font-size: 1.8rem;
+        }
+      }
+    }
+    & .user-modal {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(black, 0.5);
+      z-index: 99;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem,
+        rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.1s all ease-in-out;
+      & .modal-container {
+        background-color: white;
+        padding: 5rem 6rem;
+        position: relative;
+        & form {
+          display: flex;
+          flex-direction: column;
+          & .form-container {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0rem;
+            & .react-icon {
+              font-size: 2.2rem;
+              margin-right: 2rem;
+            }
+            & .form-control {
+              margin: 0rem 1rem;
+              & label {
+                display: none;
+              }
+              & select {
+                border: none;
+                outline: none;
+                padding: 0.25rem 2rem 0.25rem 0rem;
+                border-bottom: 0.2rem darkgray solid;
+                cursor: pointer;
+              }
+              & input {
+                border: none;
+                outline: none;
+                padding: 0.25rem 0rem;
+                border-bottom: 0.2rem darkgray solid;
+              }
+            }
+          }
+          & .modal-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            & .btn {
+              @include btn(1.5rem 4rem, 3rem 0rem 0rem 0rem);
+            }
+          }
+        }
+        & .modal-close {
+          position: absolute;
+          top: 2rem;
+          right: 2rem;
+          & .react-icon {
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: 0.2s all;
+            &:hover {
+              color: red;
+            }
+          }
+        }
+        & h2 {
+          font-size: 2.5rem;
+          margin-bottom: 3rem;
+        }
+      }
+    }
+    & .user-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
 }
