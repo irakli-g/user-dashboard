@@ -104,6 +104,9 @@ const UserModal: React.FC = () => {
                     id: v4(),
                     status: true,
                   });
+                  setFirstName("");
+                  setLastName("");
+                  setEmail("");
                 } else {
                   activateMessage(
                     MessageStatus.ERROR,
@@ -114,7 +117,6 @@ const UserModal: React.FC = () => {
             >
               Send Invitation
             </button>
-            <p className="validation-text"></p>
           </div>
         </form>
       </div>

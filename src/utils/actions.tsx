@@ -1,4 +1,4 @@
-import { MessageStatus, User } from "../reducer/reducer";
+import { MessageStatus, User, CurrentSortStatus } from "../reducer/reducer";
 
 interface AddUser {
   type: "ADD_USER";
@@ -32,10 +32,24 @@ interface ClosseModal {
   type: "CLOSE_MODAL";
 }
 
+interface ToggleUserStatus {
+  type: "TOGGLE_USER_STATUS";
+  payload: {
+    id: string | number;
+  };
+}
+
+interface SortUsers {
+  type: "SORT_USERS";
+  payload: CurrentSortStatus;
+}
+
 export type Actions =
   | DeleteUser
   | AddUser
   | ActivateMessage
   | ClearMessage
   | OpenModal
-  | ClosseModal;
+  | ClosseModal
+  | ToggleUserStatus
+  | SortUsers;

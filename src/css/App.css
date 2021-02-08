@@ -10,7 +10,44 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
 
 main {
-  position: relative; }
+  position: relative;
+  overflow-x: hidden; }
+  main .message-modal {
+    position: absolute;
+    z-index: 100;
+    top: 6rem;
+    right: 0;
+    transform: translateX(15rem);
+    border-radius: 3rem;
+    transition: 0.4s all ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem; }
+    main .message-modal .message-content {
+      color: white;
+      font-size: 1.35rem;
+      font-weight: bold; }
+    main .message-modal .react-icon {
+      font-size: 2.5rem;
+      margin-right: 1rem;
+      color: white; }
+  main .message-modal.error {
+    background-color: #d40000;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-2rem); }
+  main .message-modal.warning {
+    background-color: #ffe700;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-2rem); }
+  main .message-modal.success {
+    background-color: #00c900;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-2rem); }
   main #home {
     position: relative; }
     main #home header {
@@ -23,11 +60,23 @@ main {
       box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
       main #home header h1 {
         font-size: 3rem; }
-      main #home header .form-control input {
-        border: none;
-        outline: none;
-        padding: 0.2rem 0.5rem;
-        border-bottom: 0.2rem solid darkgray; }
+      main #home header .form-control {
+        display: flex;
+        align-items: center;
+        border-bottom: 0.2rem darkgray solid;
+        padding-bottom: 0.2rem; }
+        main #home header .form-control .react-icon {
+          font-size: 2rem;
+          margin-bottom: 0.2rem;
+          cursor: pointer;
+          transition: 0.2s all; }
+          main #home header .form-control .react-icon:hover {
+            color: #0000c7; }
+        main #home header .form-control input {
+          border: none;
+          outline: none;
+          padding: 0.2rem;
+          font-style: italic; }
       main #home header .add-user {
         position: absolute;
         left: 15%;
@@ -53,8 +102,86 @@ main {
         justify-items: center;
         border-bottom: 0.25rem darkgray solid;
         padding-bottom: 2rem; }
+        main #home .container .container-header .active {
+          color: black; }
         main #home .container .container-header h4 {
-          font-size: 1.8rem; }
+          font-size: 1.55rem;
+          text-transform: uppercase;
+          cursor: pointer;
+          color: darkgray; }
+      main #home .container .container-users {
+        display: flex;
+        flex-direction: column;
+        margin: 2rem 0rem; }
+        main #home .container .container-users .user {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          margin: 1rem 0rem;
+          justify-items: center;
+          align-items: center; }
+          main #home .container .container-users .user .user-role {
+            display: flex;
+            align-items: center; }
+            main #home .container .container-users .user .user-role h4 {
+              font-size: 1.4rem;
+              text-transform: capitalize; }
+            main #home .container .container-users .user .user-role .react-icon {
+              font-size: 2.5rem;
+              width: 5rem;
+              background-color: #8e00cf;
+              border-radius: 2rem;
+              color: white;
+              margin-right: 1rem; }
+          main #home .container .container-users .user .user-name {
+            justify-self: flex-start;
+            display: flex;
+            align-items: center; }
+            main #home .container .container-users .user .user-name .content h3 {
+              font-size: 2rem; }
+            main #home .container .container-users .user .user-name .content h4 {
+              font-size: 1.1rem;
+              color: darkgray; }
+            main #home .container .container-users .user .user-name .icon {
+              margin-right: 1rem; }
+              main #home .container .container-users .user .user-name .icon .react-icon {
+                font-size: 4rem; }
+          main #home .container .container-users .user .user-actions {
+            justify-self: flex-end; }
+            main #home .container .container-users .user .user-actions .react-icon {
+              margin: 0 0.5rem;
+              font-size: 1.55rem;
+              cursor: pointer;
+              color: darkgray;
+              transition: 0.2s all; }
+            main #home .container .container-users .user .user-actions .react-icon.trash:hover {
+              color: red; }
+          main #home .container .container-users .user .user-status.active {
+            background-color: lightblue; }
+          main #home .container .container-users .user .user-status.inactive {
+            background-color: lightcoral; }
+          main #home .container .container-users .user .user-status {
+            width: 5rem;
+            padding: 1.2rem;
+            box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
+            border-radius: 3rem;
+            cursor: pointer;
+            position: relative; }
+            main #home .container .container-users .user .user-status .btn.active {
+              background-color: #0389b6;
+              transform: translateX(2.5rem); }
+            main #home .container .container-users .user .user-status .btn.inactive {
+              background-color: #cc0000;
+              transform: translateX(0rem); }
+            main #home .container .container-users .user .user-status .btn {
+              position: absolute;
+              padding: 1.2rem;
+              top: 0;
+              left: 0;
+              transition: 0.2s all;
+              border-radius: 50%;
+              border: none;
+              outline: none;
+              cursor: pointer; }
     main #home .user-modal {
       position: absolute;
       top: 0;

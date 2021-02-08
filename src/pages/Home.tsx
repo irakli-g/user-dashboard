@@ -1,8 +1,10 @@
 import React from "react";
 import UserModal from "../components/UserModal";
-import AllUsers from "../components/AllUsers";
+import AllUsers from "../components/Home/AllUsers";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import { useAppContext } from "../context/context";
+import Header from "../components/Home/Header";
+import { BiSearch } from "react-icons/bi";
 
 const Home: React.FC = () => {
   const { openModal } = useAppContext();
@@ -14,6 +16,7 @@ const Home: React.FC = () => {
         <h1 className="header-title">Project Access</h1>
         <div className="form-control">
           <input type="text" placeholder="Type to filter the table" />
+          <BiSearch className="react-icon search" />
         </div>
         <figure className="add-user">
           <BsFillPlusCircleFill
@@ -23,12 +26,7 @@ const Home: React.FC = () => {
         </figure>
       </header>
       <div className="container">
-        <div className="container-header">
-          <h4>User</h4>
-          <h4>Role</h4>
-          <h4>Status</h4>
-          <h4>Actions</h4>
-        </div>
+        <Header />
         <AllUsers />
       </div>
       <footer></footer>
