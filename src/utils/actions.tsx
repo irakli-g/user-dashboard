@@ -44,6 +44,20 @@ interface SortUsers {
   payload: CurrentSortStatus;
 }
 
+interface FilterUsers {
+  type: "FILTER_USERS";
+  payload: string;
+}
+
+interface UpdateUser {
+  type: "UPDATE_USER";
+  payload: {
+    id: string | number;
+    kind: string;
+    value: string;
+  };
+}
+
 export type Actions =
   | DeleteUser
   | AddUser
@@ -52,4 +66,6 @@ export type Actions =
   | OpenModal
   | ClosseModal
   | ToggleUserStatus
-  | SortUsers;
+  | SortUsers
+  | FilterUsers
+  | UpdateUser;

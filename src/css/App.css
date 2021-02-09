@@ -48,8 +48,10 @@ main {
     opacity: 1;
     visibility: visible;
     transform: translateX(-2rem); }
+  main #user,
   main #home {
-    position: relative; }
+    background-color: #f0f0f0; }
+    main #user header,
     main #home header {
       background-color: white;
       padding: 4rem 0rem;
@@ -58,34 +60,220 @@ main {
       justify-content: space-evenly;
       position: relative;
       box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
+      main #user header h1,
       main #home header h1 {
         font-size: 3rem; }
-      main #home header .form-control {
-        display: flex;
-        align-items: center;
-        border-bottom: 0.2rem darkgray solid;
-        padding-bottom: 0.2rem; }
-        main #home header .form-control .react-icon {
-          font-size: 2rem;
-          margin-bottom: 0.2rem;
-          cursor: pointer;
-          transition: 0.2s all; }
-          main #home header .form-control .react-icon:hover {
-            color: #0000c7; }
-        main #home header .form-control input {
-          border: none;
-          outline: none;
-          padding: 0.2rem;
-          font-style: italic; }
-      main #home header .add-user {
+      main #user header .header-icon,
+      main #home header .header-icon {
         position: absolute;
         left: 15%;
         bottom: -20%;
-        z-index: 2; }
-        main #home header .add-user .react-icon {
-          font-size: 6rem;
-          color: #0000c7;
+        z-index: 2;
+        background-color: #0000c7;
+        border-radius: 50%;
+        width: 6.5rem;
+        height: 6.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer; }
+        main #user header .header-icon .react-icon,
+        main #home header .header-icon .react-icon {
+          font-size: 3.5rem;
+          color: white;
           cursor: pointer; }
+  main #user header h1 {
+    margin: 0 auto 0 40rem; }
+  main #user header .header-icon {
+    background-color: lightgray;
+    cursor: default; }
+    main #user header .header-icon .react-icon {
+      cursor: default; }
+  main #user .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
+    padding: 5rem 8rem; }
+    main #user .container .user-showcase {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      main #user .container .user-showcase .showcase {
+        display: flex;
+        flex-direction: column;
+        align-items: center; }
+        main #user .container .user-showcase .showcase p {
+          font-size: 1.8rem;
+          margin: 1rem 0rem 2rem 0rem;
+          text-transform: uppercase;
+          color: darkgray; }
+        main #user .container .user-showcase .showcase .user-photo {
+          position: relative; }
+          main #user .container .user-showcase .showcase .user-photo .react-icon.key {
+            position: absolute;
+            z-index: 2;
+            font-size: 3rem;
+            background-color: #8e00cf;
+            color: white;
+            border-radius: 2rem;
+            width: 5rem;
+            bottom: 3rem;
+            right: 1rem; }
+          main #user .container .user-showcase .showcase .user-photo .react-icon.user {
+            font-size: 20rem; }
+      main #user .container .user-showcase .short-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%; }
+        main #user .container .user-showcase .short-info h3 {
+          color: black;
+          text-transform: uppercase;
+          font-size: 2.5rem;
+          overflow-x: auto;
+          width: 30rem;
+          text-align: center; }
+        main #user .container .user-showcase .short-info h4 {
+          margin: 1rem 0rem;
+          color: darkgray;
+          font-size: 1.25rem;
+          overflow-x: auto; }
+        main #user .container .user-showcase .short-info .user-p.inactive {
+          color: darkgray; }
+      main #user .container .user-showcase .user-btn {
+        background-color: darkblue;
+        color: white;
+        font-weight: bold;
+        border-radius: 3rem;
+        padding: 1.5rem 3rem;
+        margin: 2rem 0rem 0rem 0rem;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        transition: 0.2s all ease-in-out;
+        box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
+        background-color: #4e91e9; }
+        main #user .container .user-showcase .user-btn:hover {
+          box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
+        main #user .container .user-showcase .user-btn:active {
+          transform: scale(0.97); }
+    main #user .container .user-details {
+      display: flex;
+      flex-direction: column; }
+      main #user .container .user-details h2 {
+        font-size: 3rem;
+        margin-bottom: 2rem; }
+      main #user .container .user-details .user-status-container {
+        display: flex;
+        align-items: center;
+        margin: 1rem 0rem 3rem 0rem; }
+        main #user .container .user-details .user-status-container p {
+          margin-left: 1rem;
+          font-size: 1.6rem; }
+          main #user .container .user-details .user-status-container p span {
+            color: black;
+            transition: 0.2s all;
+            font-weight: bold; }
+        main #user .container .user-details .user-status-container .user-status.active {
+          background-color: lightblue; }
+        main #user .container .user-details .user-status-container .user-status.inactive {
+          background-color: lightcoral; }
+        main #user .container .user-details .user-status-container .user-status {
+          width: 5rem;
+          padding: 1.2rem;
+          box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
+          border-radius: 3rem;
+          cursor: pointer;
+          position: relative; }
+          main #user .container .user-details .user-status-container .user-status .btn.active {
+            background-color: #0389b6;
+            transform: translateX(2.5rem); }
+          main #user .container .user-details .user-status-container .user-status .btn.inactive {
+            background-color: #cc0000;
+            transform: translateX(0rem); }
+          main #user .container .user-details .user-status-container .user-status .btn {
+            position: absolute;
+            padding: 1.2rem;
+            top: 0;
+            left: 0;
+            transition: 0.2s all;
+            border-radius: 50%;
+            border: none;
+            outline: none;
+            cursor: pointer; }
+        main #user .container .user-details .user-status-container .back-btn {
+          background-color: darkblue;
+          color: white;
+          font-weight: bold;
+          border-radius: 3rem;
+          padding: 0.4rem 1rem;
+          margin: 0rem 0rem 0rem 1rem;
+          cursor: pointer;
+          border: none;
+          outline: none;
+          transition: 0.2s all ease-in-out;
+          box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem; }
+          main #user .container .user-details .user-status-container .back-btn:hover {
+            box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
+          main #user .container .user-details .user-status-container .back-btn:active {
+            transform: scale(0.97); }
+      main #user .container .user-details form {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        margin: 0 auto 0 5rem; }
+        main #user .container .user-details form .form-control {
+          display: flex;
+          flex-direction: column;
+          margin: 1rem 0rem; }
+          main #user .container .user-details form .form-control label {
+            color: blue;
+            margin-bottom: 0.5rem; }
+          main #user .container .user-details form .form-control input {
+            border: none;
+            outline: none;
+            padding: 0.25rem 0rem;
+            border-bottom: 0.2rem darkgray solid;
+            transition: 0.2s all;
+            background-color: transparent; }
+          main #user .container .user-details form .form-control .user-p.inactive {
+            color: darkgray; }
+      main #user .container .user-details .user-btn {
+        background-color: darkblue;
+        color: white;
+        font-weight: bold;
+        border-radius: 3rem;
+        padding: 1.5rem 3rem;
+        margin: 8rem auto 0rem 5rem;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        transition: 0.2s all ease-in-out;
+        box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
+        width: 50%; }
+        main #user .container .user-details .user-btn:hover {
+          box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
+        main #user .container .user-details .user-btn:active {
+          transform: scale(0.97); }
+  main #home {
+    position: relative; }
+    main #home header .form-control {
+      display: flex;
+      align-items: center;
+      border-bottom: 0.2rem darkgray solid;
+      padding-bottom: 0.2rem; }
+      main #home header .form-control .react-icon {
+        font-size: 2rem;
+        margin-bottom: 0.2rem;
+        cursor: pointer;
+        transition: 0.2s all; }
+        main #home header .form-control .react-icon:hover {
+          color: #0000c7; }
+      main #home header .form-control input {
+        border: none;
+        outline: none;
+        padding: 0.2rem;
+        font-style: italic; }
     main #home .container {
       width: 100%;
       height: 70rem;
@@ -153,6 +341,8 @@ main {
               cursor: pointer;
               color: darkgray;
               transition: 0.2s all; }
+            main #home .container .container-users .user .user-actions .react-icon.gear:hover {
+              color: #0389b6; }
             main #home .container .container-users .user .user-actions .react-icon.trash:hover {
               color: red; }
           main #home .container .container-users .user .user-status.active {
@@ -207,25 +397,43 @@ main {
           main #home .user-modal .modal-container form .form-container {
             display: flex;
             align-items: center;
-            margin: 1.5rem 0rem; }
+            margin: 2rem 0rem; }
             main #home .user-modal .modal-container form .form-container .react-icon {
               font-size: 2.2rem;
               margin-right: 2rem; }
             main #home .user-modal .modal-container form .form-container .form-control {
+              position: relative;
               margin: 0rem 1rem; }
               main #home .user-modal .modal-container form .form-container .form-control label {
-                display: none; }
+                position: absolute;
+                top: 0;
+                left: 0;
+                color: blue;
+                visibility: visible;
+                opacity: 1;
+                transform: translateY(-1.8rem);
+                transition: 0.2s all;
+                font-size: 1.25rem; }
+              main #home .user-modal .modal-container form .form-container .form-control input {
+                border: none;
+                outline: none;
+                padding: 0.25rem 0rem;
+                border-bottom: 0.2rem darkgray solid;
+                transition: 0.2s all; }
+                main #home .user-modal .modal-container form .form-container .form-control input:placeholder-shown + label {
+                  opacity: 0;
+                  visibility: hidden;
+                  transform: translateY(1rem); }
+                main #home .user-modal .modal-container form .form-container .form-control input:valid {
+                  border-bottom: 0.2rem #00c900 solid; }
+                main #home .user-modal .modal-container form .form-container .form-control input:invalid {
+                  border-bottom: 0.2rem #cc0000 solid; }
               main #home .user-modal .modal-container form .form-container .form-control select {
                 border: none;
                 outline: none;
                 padding: 0.25rem 2rem 0.25rem 0rem;
                 border-bottom: 0.2rem darkgray solid;
                 cursor: pointer; }
-              main #home .user-modal .modal-container form .form-container .form-control input {
-                border: none;
-                outline: none;
-                padding: 0.25rem 0rem;
-                border-bottom: 0.2rem darkgray solid; }
           main #home .user-modal .modal-container form .modal-footer {
             display: flex;
             align-items: center;
@@ -246,6 +454,10 @@ main {
                 box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
               main #home .user-modal .modal-container form .modal-footer .btn:active {
                 transform: scale(0.97); }
+          main #home .user-modal .modal-container form div:nth-child(2) .form-control {
+            width: 85%; }
+            main #home .user-modal .modal-container form div:nth-child(2) .form-control input {
+              width: 100%; }
         main #home .user-modal .modal-container .modal-close {
           position: absolute;
           top: 2rem;
@@ -262,3 +474,11 @@ main {
     main #home .user-modal.active {
       opacity: 1;
       visibility: visible; }
+  main .user-p.inactive.hidden {
+    visibility: hidden;
+    opacity: 0; }
+  main .user-p.inactive {
+    color: darkgray; }
+  main .user-btn.inactive {
+    visibility: hidden;
+    opacity: 0; }

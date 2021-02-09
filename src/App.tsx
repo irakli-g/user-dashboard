@@ -11,7 +11,7 @@ const App: React.FC = () => {
       <Message />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/user-settings/:id" element={<UserSettings />} />
+        <Route path="/user/:id" element={<UserSettings />} />
       </Routes>
     </main>
   );

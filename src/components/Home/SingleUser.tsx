@@ -4,6 +4,7 @@ import { FaUserCircle, FaTrash } from "react-icons/fa";
 import { VscGear } from "react-icons/vsc";
 import { BiKey } from "react-icons/bi";
 import { useAppContext } from "../../context/context";
+import { Link } from "react-router-dom";
 
 const SingleUser: React.FC<User> = (props) => {
   const { deleteUser, toggleStatus } = useAppContext();
@@ -38,7 +39,9 @@ const SingleUser: React.FC<User> = (props) => {
         ></button>
       </div>
       <div className="user-actions">
-        <VscGear className="react-icon gear" />
+        <Link to={`/user/${props.id}`}>
+          <VscGear className="react-icon gear" />
+        </Link>
         <FaTrash
           className="react-icon trash"
           onClick={() => {

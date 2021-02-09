@@ -1,4 +1,5 @@
 import { Actions } from "../utils/actions";
+import { UserPermissions } from "../utils/permissions";
 
 export enum MessageStatus {
   SUCCESS = "success",
@@ -21,6 +22,9 @@ export interface User {
   role: string;
   id: string | number;
   status: boolean;
+  imgUrl: string;
+  permissions: UserPermissions;
+  superAdmin: boolean;
 }
 
 export interface InitialState {
@@ -66,7 +70,17 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
     };
   }
   if (action.type === "ADD_USER") {
-    const { firstName, lastName, email, id, role, status } = action.payload;
+    const {
+      firstName,
+      lastName,
+      email,
+      id,
+      role,
+      status,
+      permissions,
+      imgUrl,
+      superAdmin,
+    } = action.payload;
     return {
       ...state,
       isModalOpen: false,
@@ -76,11 +90,31 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
       },
       allUsers: [
         ...state.allUsers,
-        { firstName, lastName, email, id, role, status },
+        {
+          firstName,
+          lastName,
+          email,
+          id,
+          role,
+          status,
+          permissions,
+          imgUrl,
+          superAdmin,
+        },
       ],
       filteredUsers: [
         ...state.filteredUsers,
-        { firstName, lastName, email, id, role, status },
+        {
+          firstName,
+          lastName,
+          email,
+          id,
+          role,
+          status,
+          permissions,
+          imgUrl,
+          superAdmin,
+        },
       ],
     };
   }
@@ -131,6 +165,68 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
         filteredUsers: tempUsers,
       };
     }
+    if (action.payload === CurrentSortStatus.ROLE) {
+      let tempUsers = state.allUsers.sort((a, b) => {
+        return a.role.toLowerCase().localeCompare(b.role.toLowerCase());
+      });
+      return {
+        ...state,
+        currentSort: action.payload,
+        allUsers: tempUsers,
+        filteredUsers: tempUsers,
+      };
+    }
+    if (action.payload === CurrentSortStatus.STATUS) {
+      let tempUsers = state.allUsers.sort((a, b) => {
+        return a.status === b.status ? 0 : a.status ? -1 : 1;
+      });
+      console.log(tempUsers);
+      return {
+        ...state,
+        currentSort: action.payload,
+        allUsers: tempUsers,
+        filteredUsers: tempUsers,
+      };
+    }
+  }
+  if (action.type === "FILTER_USERS") {
+    const input = action.payload.toLowerCase();
+    let tempUsers = state.allUsers.filter((item) => {
+      const { firstName, lastName } = item;
+      const combineNames = `${firstName.toLowerCase()} ${lastName.toLowerCase()}`;
+      return combineNames.indexOf(input) !== -1;
+    });
+
+    return {
+      ...state,
+      filteredUsers: tempUsers,
+    };
+  }
+  if (action.type === "UPDATE_USER") {
+    let tempUsers = state.allUsers.map((item) => {
+      if (item.id === action.payload.id) {
+        if (action.payload.kind === "firstName") {
+          item.firstName = action.payload.value;
+        }
+        if (action.payload.kind === "lastName") {
+          item.lastName = action.payload.value;
+        }
+        if (action.payload.kind === "email") {
+          item.email = action.payload.value;
+        }
+        if (action.payload.kind === "role") {
+          item.role = action.payload.value;
+        }
+        return item;
+      } else {
+        return item;
+      }
+    });
+    return {
+      ...state,
+      allUsers: tempUsers,
+      filteredUsers: tempUsers,
+    };
   }
   return {
     ...state,

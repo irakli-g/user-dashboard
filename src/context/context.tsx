@@ -16,6 +16,8 @@ interface ContextInitialState extends InitialState {
   deleteUser: (id: string | number) => void;
   toggleStatus: (id: string | number) => void;
   sortUsers: (value: CurrentSortStatus) => void;
+  filterUsers: (value: string) => void;
+  updateUser: (id: string | number, kind: string, value: string) => void;
 }
 
 const getUsersFromStorage = () => {
@@ -90,6 +92,14 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
     dispatch({ type: "SORT_USERS", payload: value });
   };
 
+  const filterUsers = (value: string) => {
+    dispatch({ type: "FILTER_USERS", payload: value });
+  };
+
+  const updateUser = (id: string | number, kind: string, value: string) => {
+    dispatch({ type: "UPDATE_USER", payload: { id, kind, value } });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -102,6 +112,8 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
         deleteUser,
         toggleStatus,
         sortUsers,
+        filterUsers,
+        updateUser,
       }}
     >
       {children}

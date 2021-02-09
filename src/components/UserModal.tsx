@@ -6,6 +6,7 @@ import { IoMdClose } from "react-icons/io";
 import { useAppContext } from "../context/context";
 import { v4 } from "uuid";
 import { MessageStatus } from "../reducer/reducer";
+import { permissions } from "../utils/permissions";
 
 const UserModal: React.FC = () => {
   const { isModalOpen, closeModal, addUser, activateMessage } = useAppContext();
@@ -15,12 +16,24 @@ const UserModal: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [role, setRole] = useState("admin");
 
+  // Regex validation for form
+  const emailRegex: RegExp = /^[a-z0-9\.-]+@[a-z0-9]{2,}\.[a-z]{2,5}(\.[a-z]{2,5})?$/i;
+  const lettersRegex: RegExp = /^[a-z\s]+$/i;
+
   return (
     <div className={isModalOpen ? "user-modal active" : "user-modal"}>
       <div className="modal-container">
         <h2>Invite New User</h2>
         <figure className="modal-close">
-          <IoMdClose className="react-icon close" onClick={closeModal} />
+          <IoMdClose
+            className="react-icon close"
+            onClick={() => {
+              closeModal();
+              setFirstName("");
+              setLastName("");
+              setEmail("");
+            }}
+          />
         </figure>
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="form-container">
@@ -31,6 +44,7 @@ const UserModal: React.FC = () => {
                 placeholder="* First Name"
                 name="firstName"
                 id="firstName"
+                pattern="^[a-zA-Z\s]+$"
                 value={firstName}
                 onChange={(e) => {
                   setFirstName(e.currentTarget.value);
@@ -44,6 +58,7 @@ const UserModal: React.FC = () => {
                 placeholder="* Last Name"
                 name="lastName"
                 id="lastName"
+                pattern="^[a-zA-Z\s]+$"
                 value={lastName}
                 onChange={(e) => {
                   setLastName(e.currentTarget.value);
@@ -60,6 +75,7 @@ const UserModal: React.FC = () => {
                 placeholder="* Email"
                 name="email"
                 id="email"
+                pattern="^[a-zA-Z0-9\.-]+@[a-zA-Z0-9]{2,}\.[a-z]{2,5}(\.[a-z]{2,5})?$"
                 value={email}
                 onChange={(e) => {
                   setEmail(e.currentTarget.value);
@@ -96,17 +112,31 @@ const UserModal: React.FC = () => {
               type="submit"
               onClick={() => {
                 if (firstName && lastName && email && role) {
-                  addUser({
-                    firstName,
-                    lastName,
-                    email,
-                    role,
-                    id: v4(),
-                    status: true,
-                  });
-                  setFirstName("");
-                  setLastName("");
-                  setEmail("");
+                  if (
+                    emailRegex.test(email) === false ||
+                    lettersRegex.test(firstName) === false ||
+                    lettersRegex.test(lastName) === false
+                  ) {
+                    activateMessage(
+                      MessageStatus.ERROR,
+                      "Invalid input format."
+                    );
+                  } else {
+                    addUser({
+                      firstName,
+                      lastName,
+                      email,
+                      role,
+                      id: v4(),
+                      status: true,
+                      permissions,
+                      imgUrl: "",
+                      superAdmin: false,
+                    });
+                    setFirstName("");
+                    setLastName("");
+                    setEmail("");
+                  }
                 } else {
                   activateMessage(
                     MessageStatus.ERROR,

@@ -15,7 +15,6 @@ body {
 main {
   position: relative;
   overflow-x: hidden;
-  // MESSAGE STYLING
   & .message-modal {
     position: absolute;
     z-index: 100;
@@ -58,10 +57,9 @@ main {
     visibility: visible;
     transform: translateX(-2rem);
   }
-  // HOME PAGE STYLING
-  & #home {
-    position: relative;
-
+  & #user,
+  #home {
+    background-color: rgb(240, 240, 240);
     & header {
       background-color: white;
       padding: 4rem 0rem;
@@ -74,6 +72,176 @@ main {
       & h1 {
         font-size: 3rem;
       }
+      & .header-icon {
+        position: absolute;
+        left: 15%;
+        bottom: -20%;
+        z-index: 2;
+        background-color: rgb(0, 0, 199);
+        border-radius: 50%;
+        width: 6.5rem;
+        height: 6.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        & .react-icon {
+          font-size: 3.5rem;
+          color: white;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  & #user {
+    & header {
+      & h1 {
+        margin: 0 auto 0 40rem;
+      }
+      & .header-icon {
+        background-color: lightgray;
+        cursor: default;
+        & .react-icon {
+          cursor: default;
+        }
+      }
+    }
+    & .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 2rem;
+      padding: 5rem 8rem;
+      & .user-showcase {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        // justify-content: space-between;
+        & .showcase {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          & p {
+            font-size: 1.8rem;
+            margin: 1rem 0rem 2rem 0rem;
+            text-transform: uppercase;
+            color: darkgray;
+          }
+          & .user-photo {
+            position: relative;
+            & .react-icon.key {
+              position: absolute;
+              z-index: 2;
+              font-size: 3rem;
+              background-color: rgb(142, 0, 207);
+              color: white;
+              border-radius: 2rem;
+              width: 5rem;
+              bottom: 3rem;
+              right: 1rem;
+            }
+            & .react-icon.user {
+              font-size: 20rem;
+            }
+          }
+        }
+        & .short-info {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          & h3 {
+            color: black;
+            text-transform: uppercase;
+            font-size: 2.5rem;
+            overflow-x: auto;
+            width: 30rem;
+            text-align: center;
+          }
+          & h4 {
+            margin: 1rem 0rem;
+            color: darkgray;
+            font-size: 1.25rem;
+            overflow-x: auto;
+          }
+          & .user-p.inactive {
+            color: darkgray;
+          }
+        }
+        & .user-btn {
+          @include btn(1.5rem 3rem, 2rem 0rem 0rem 0rem);
+          background-color: rgb(78, 145, 233);
+        }
+      }
+      & .user-details {
+        display: flex;
+        flex-direction: column;
+        // justify-content: space-between;
+        & h2 {
+          font-size: 3rem;
+          margin-bottom: 2rem;
+        }
+        & .user-status-container {
+          display: flex;
+          align-items: center;
+          margin: 1rem 0rem 3rem 0rem;
+          & p {
+            margin-left: 1rem;
+            font-size: 1.6rem;
+            & span {
+              color: black;
+              transition: 0.2s all;
+              font-weight: bold;
+            }
+          }
+          & .user-status.active {
+            background-color: lightblue;
+          }
+          & .user-status.inactive {
+            background-color: lightcoral;
+          }
+          & .user-status {
+            @include toggler;
+          }
+          & .back-btn {
+            @include btn(0.4rem 1rem, 0rem 0rem 0rem 1rem);
+          }
+        }
+        & form {
+          display: flex;
+          flex-direction: column;
+          width: 50%;
+          margin: 0 auto 0 5rem;
+          & .form-control {
+            display: flex;
+            flex-direction: column;
+            margin: 1rem 0rem;
+            & label {
+              color: blue;
+              margin-bottom: 0.5rem;
+            }
+            & input {
+              border: none;
+              outline: none;
+              padding: 0.25rem 0rem;
+              border-bottom: 0.2rem darkgray solid;
+              transition: 0.2s all;
+              background-color: transparent;
+            }
+            & .user-p.inactive {
+              color: darkgray;
+            }
+          }
+        }
+        & .user-btn {
+          @include btn(1.5rem 3rem, 8rem auto 0rem 5rem);
+          width: 50%;
+        }
+      }
+    }
+  }
+  & #home {
+    position: relative;
+    & header {
       & .form-control {
         display: flex;
         align-items: center;
@@ -93,17 +261,6 @@ main {
           outline: none;
           padding: 0.2rem;
           font-style: italic;
-        }
-      }
-      & .add-user {
-        position: absolute;
-        left: 15%;
-        bottom: -20%;
-        z-index: 2;
-        & .react-icon {
-          font-size: 6rem;
-          color: rgb(0, 0, 199);
-          cursor: pointer;
         }
       }
     }
@@ -190,6 +347,9 @@ main {
               color: darkgray;
               transition: 0.2s all;
             }
+            & .react-icon.gear:hover {
+              color: rgb(3, 137, 182);
+            }
             & .react-icon.trash:hover {
               color: red;
             }
@@ -201,31 +361,7 @@ main {
             background-color: lightcoral;
           }
           & .user-status {
-            width: 5rem;
-            padding: 1.2rem;
-            box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
-            border-radius: 3rem;
-            cursor: pointer;
-            position: relative;
-            & .btn.active {
-              background-color: rgb(3, 137, 182);
-              transform: translateX(2.5rem);
-            }
-            & .btn.inactive {
-              background-color: rgb(204, 0, 0);
-              transform: translateX(0rem);
-            }
-            & .btn {
-              position: absolute;
-              padding: 1.2rem;
-              top: 0;
-              left: 0;
-              transition: 0.2s all;
-              border-radius: 50%;
-              border: none;
-              outline: none;
-              cursor: pointer;
-            }
+            @include toggler;
           }
         }
       }
@@ -256,15 +392,42 @@ main {
           & .form-container {
             display: flex;
             align-items: center;
-            margin: 1.5rem 0rem;
+            margin: 2rem 0rem;
             & .react-icon {
               font-size: 2.2rem;
               margin-right: 2rem;
             }
             & .form-control {
+              position: relative;
               margin: 0rem 1rem;
               & label {
-                display: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                color: blue;
+                visibility: visible;
+                opacity: 1;
+                transform: translateY(-1.8rem);
+                transition: 0.2s all;
+                font-size: 1.25rem;
+              }
+              & input {
+                border: none;
+                outline: none;
+                padding: 0.25rem 0rem;
+                border-bottom: 0.2rem darkgray solid;
+                transition: 0.2s all;
+                &:placeholder-shown + label {
+                  opacity: 0;
+                  visibility: hidden;
+                  transform: translateY(1rem);
+                }
+                &:valid {
+                  border-bottom: 0.2rem rgb(0, 201, 0) solid;
+                }
+                &:invalid {
+                  border-bottom: 0.2rem rgb(204, 0, 0) solid;
+                }
               }
               & select {
                 border: none;
@@ -272,12 +435,6 @@ main {
                 padding: 0.25rem 2rem 0.25rem 0rem;
                 border-bottom: 0.2rem darkgray solid;
                 cursor: pointer;
-              }
-              & input {
-                border: none;
-                outline: none;
-                padding: 0.25rem 0rem;
-                border-bottom: 0.2rem darkgray solid;
               }
             }
           }
@@ -287,6 +444,14 @@ main {
             justify-content: space-between;
             & .btn {
               @include btn(1.5rem 4rem, 3rem 0rem 0rem 0rem);
+            }
+          }
+          & div:nth-child(2) {
+            & .form-control {
+              width: 85%;
+              & input {
+                width: 100%;
+              }
             }
           }
         }
@@ -313,5 +478,16 @@ main {
       opacity: 1;
       visibility: visible;
     }
+  }
+  & .user-p.inactive.hidden {
+    visibility: hidden;
+    opacity: 0;
+  }
+  & .user-p.inactive {
+    color: darkgray;
+  }
+  & .user-btn.inactive {
+    visibility: hidden;
+    opacity: 0;
   }
 }
