@@ -226,6 +226,13 @@ main {
           display: flex;
           flex-direction: column;
           margin: 1rem 0rem; }
+          main #user .container .user-details form .form-control select {
+            border: none;
+            outline: none;
+            padding: 0.25rem 2rem 0.25rem 0rem;
+            border-bottom: 0.2rem darkgray solid;
+            cursor: pointer;
+            background-color: transparent; }
           main #user .container .user-details form .form-control label {
             color: blue;
             margin-bottom: 0.5rem; }
@@ -255,6 +262,51 @@ main {
           box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
         main #user .container .user-details .user-btn:active {
           transform: scale(0.97); }
+    main #user .container .user-permissions > div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; }
+      main #user .container .user-permissions > div h2 {
+        font-size: 3rem; }
+      main #user .container .user-permissions > div p {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-transform: capitalize; }
+    main #user .container .user-permissions .super-admin {
+      margin: 2rem 0rem;
+      border-bottom: 0.2rem darkgray solid;
+      padding-bottom: 2rem; }
+      main #user .container .user-permissions .super-admin h3 {
+        font-size: 1.6rem; }
+      main #user .container .user-permissions .super-admin .user-status-btn.active {
+        background-color: lightblue; }
+      main #user .container .user-permissions .super-admin .user-status-btn.inactive {
+        background-color: lightcoral; }
+      main #user .container .user-permissions .super-admin .user-status-btn {
+        width: 5rem;
+        padding: 1.2rem;
+        box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
+        border-radius: 3rem;
+        cursor: pointer;
+        position: relative;
+        outline: none;
+        border: none; }
+        main #user .container .user-permissions .super-admin .user-status-btn .btn.active {
+          background-color: #0389b6;
+          transform: translateX(2.5rem); }
+        main #user .container .user-permissions .super-admin .user-status-btn .btn.inactive {
+          background-color: #cc0000;
+          transform: translateX(0rem); }
+        main #user .container .user-permissions .super-admin .user-status-btn .btn {
+          position: absolute;
+          padding: 1.2rem;
+          top: 0;
+          left: 0;
+          transition: 0.2s all;
+          border-radius: 50%;
+          border: none;
+          outline: none;
+          cursor: pointer; }
   main #home {
     position: relative; }
     main #home header .form-control {

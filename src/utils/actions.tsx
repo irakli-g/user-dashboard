@@ -53,8 +53,18 @@ interface UpdateUser {
   type: "UPDATE_USER";
   payload: {
     id: string | number;
+    firstName: string;
+    lastName: string;
+    role: string;
+  };
+}
+
+interface ToggleUserPermissions {
+  type: "TOGGLE_USER_PERMISSIONS";
+  payload: {
+    id: string | number;
+    permissionId: string | number | undefined;
     kind: string;
-    value: string;
   };
 }
 
@@ -68,4 +78,5 @@ export type Actions =
   | ToggleUserStatus
   | SortUsers
   | FilterUsers
-  | UpdateUser;
+  | UpdateUser
+  | ToggleUserPermissions;

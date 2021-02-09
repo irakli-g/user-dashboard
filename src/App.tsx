@@ -6,6 +6,8 @@ import { Routes, Route } from "react-router-dom";
 import Message from "./components/Message";
 
 const App: React.FC = () => {
+  // console.log("rerender check");
+
   return (
     <main>
       <Message />

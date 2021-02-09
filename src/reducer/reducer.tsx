@@ -205,17 +205,30 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
   if (action.type === "UPDATE_USER") {
     let tempUsers = state.allUsers.map((item) => {
       if (item.id === action.payload.id) {
-        if (action.payload.kind === "firstName") {
-          item.firstName = action.payload.value;
-        }
-        if (action.payload.kind === "lastName") {
-          item.lastName = action.payload.value;
-        }
-        if (action.payload.kind === "email") {
-          item.email = action.payload.value;
-        }
-        if (action.payload.kind === "role") {
-          item.role = action.payload.value;
+        return {
+          ...item,
+          firstName: action.payload.firstName,
+          lastName: action.payload.lastName,
+          role: action.payload.role,
+        };
+      } else {
+        return item;
+      }
+    });
+    return {
+      ...state,
+      allUsers: tempUsers,
+      filteredUsers: tempUsers,
+    };
+  }
+  if (action.type === "TOGGLE_USER_PERMISSIONS") {
+    let tempUsers = state.allUsers.map((item) => {
+      if (item.id === action.payload.id) {
+        if (action.payload.kind === "superAdmin") {
+          return {
+            ...item,
+            superAdmin: !item.superAdmin,
+          };
         }
         return item;
       } else {

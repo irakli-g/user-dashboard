@@ -215,6 +215,14 @@ main {
             display: flex;
             flex-direction: column;
             margin: 1rem 0rem;
+            & select {
+              border: none;
+              outline: none;
+              padding: 0.25rem 2rem 0.25rem 0rem;
+              border-bottom: 0.2rem darkgray solid;
+              cursor: pointer;
+              background-color: transparent;
+            }
             & label {
               color: blue;
               margin-bottom: 0.5rem;
@@ -235,6 +243,40 @@ main {
         & .user-btn {
           @include btn(1.5rem 3rem, 8rem auto 0rem 5rem);
           width: 50%;
+        }
+      }
+      & .user-permissions {
+        & > div {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          & h2 {
+            font-size: 3rem;
+          }
+          & p {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: capitalize;
+          }
+        }
+        & .super-admin {
+          margin: 2rem 0rem;
+          border-bottom: 0.2rem darkgray solid;
+          padding-bottom: 2rem;
+          & h3 {
+            font-size: 1.6rem;
+          }
+          & .user-status-btn.active {
+            background-color: lightblue;
+          }
+          & .user-status-btn.inactive {
+            background-color: lightcoral;
+          }
+          & .user-status-btn {
+            @include toggler;
+            outline: none;
+            border: none;
+          }
         }
       }
     }

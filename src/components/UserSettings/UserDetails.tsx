@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { MessageStatus, User } from "../../reducer/reducer";
 import { useAppContext } from "../../context/context";
 import { roles } from "../../utils/roles";
@@ -8,6 +8,9 @@ import { history } from "../../utils/history";
 
 const UserDetails: React.FC<User> = (props) => {
   const { toggleStatus, updateUser, activateMessage } = useAppContext();
+  const [firstName, setFirstName] = useState<string>(props.firstName);
+  const [lastName, setLastName] = useState<string>(props.lastName);
+  const [role, setRole] = useState<string>(props.role);
   const navigate: NavigateFunction = useNavigate();
   const lettersRegex: RegExp = /^[a-z\s]+$/i;
 
@@ -56,10 +59,11 @@ const UserDetails: React.FC<User> = (props) => {
             name="firstName"
             id="firstName"
             pattern="^[a-zA-Z\s]+$"
-            value={props.firstName}
+            value={firstName}
+            className={props.status ? undefined : "user-p inactive"}
             disabled={!props.status}
             onChange={(e) => {
-              updateUser(props.id, e.currentTarget.name, e.currentTarget.value);
+              setFirstName(e.currentTarget.value);
             }}
           />
         </div>
@@ -75,10 +79,11 @@ const UserDetails: React.FC<User> = (props) => {
             name="lastName"
             id="lastName"
             pattern="^[a-zA-Z\s]+$"
-            value={props.lastName}
+            value={lastName}
+            className={props.status ? undefined : "user-p inactive"}
             disabled={!props.status}
             onChange={(e) => {
-              updateUser(props.id, e.currentTarget.name, e.currentTarget.value);
+              setLastName(e.currentTarget.value);
             }}
           />
         </div>
@@ -92,10 +97,10 @@ const UserDetails: React.FC<User> = (props) => {
           <select
             name="role"
             id="role"
-            value={props.role}
+            value={role}
             disabled={!props.status}
             onChange={(e) => {
-              updateUser(props.id, e.currentTarget.name, e.currentTarget.value);
+              setRole(e.currentTarget.value);
             }}
           >
             {roles?.map((item) => {
@@ -111,13 +116,14 @@ const UserDetails: React.FC<User> = (props) => {
       <button
         className={props.status ? "user-btn" : "user-btn inactive"}
         onClick={() => {
-          if (props.firstName && props.lastName && props.role) {
+          if (firstName && lastName && role) {
             if (
-              lettersRegex.test(props.firstName) === false ||
-              lettersRegex.test(props.lastName) === false
+              lettersRegex.test(firstName) === false ||
+              lettersRegex.test(lastName) === false
             ) {
               activateMessage(MessageStatus.ERROR, "Invalid input format.");
             } else {
+              updateUser(props.id, firstName, lastName, role);
               activateMessage(
                 MessageStatus.SUCCESS,
                 "Changes have been succesfully saved."

@@ -17,7 +17,17 @@ interface ContextInitialState extends InitialState {
   toggleStatus: (id: string | number) => void;
   sortUsers: (value: CurrentSortStatus) => void;
   filterUsers: (value: string) => void;
-  updateUser: (id: string | number, kind: string, value: string) => void;
+  updateUser: (
+    id: string | number,
+    firstName: string,
+    lastName: string,
+    role: string
+  ) => void;
+  toggleUserPermissions: (
+    id: string | number,
+    kind: string,
+    permissionId: string | number | undefined
+  ) => void;
 }
 
 const getUsersFromStorage = () => {
@@ -96,8 +106,27 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
     dispatch({ type: "FILTER_USERS", payload: value });
   };
 
-  const updateUser = (id: string | number, kind: string, value: string) => {
-    dispatch({ type: "UPDATE_USER", payload: { id, kind, value } });
+  const updateUser = (
+    id: string | number,
+    firstName: string,
+    lastName: string,
+    role: string
+  ) => {
+    dispatch({
+      type: "UPDATE_USER",
+      payload: { id, firstName, lastName, role },
+    });
+  };
+
+  const toggleUserPermissions = (
+    id: string | number,
+    kind: string,
+    permissionId: string | number | undefined
+  ) => {
+    dispatch({
+      type: "TOGGLE_USER_PERMISSIONS",
+      payload: { id, kind, permissionId },
+    });
   };
 
   return (
@@ -114,6 +143,7 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
         sortUsers,
         filterUsers,
         updateUser,
+        toggleUserPermissions,
       }}
     >
       {children}
