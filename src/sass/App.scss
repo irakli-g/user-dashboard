@@ -7,6 +7,9 @@
 }
 html {
   font-size: 62.5%;
+  @media (max-width: 900px) {
+    font-size: 55%;
+  }
 }
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -16,7 +19,7 @@ main {
   position: relative;
   overflow-x: hidden;
   & .message-modal {
-    position: absolute;
+    position: fixed;
     z-index: 100;
     top: 6rem;
     right: 0;
@@ -97,6 +100,18 @@ main {
     & header {
       & h1 {
         margin: 0 auto 0 40rem;
+        @media (max-width: 1300px) {
+          margin: 0 auto 0 30rem;
+        }
+        @media (max-width: 800px) {
+          margin: 0 auto 0 20rem;
+        }
+        @media (max-width: 450px) {
+          margin: 0 auto 0 15rem;
+        }
+        @media (max-width: 350px) {
+          margin: 0 auto 0 10rem;
+        }
       }
       & .header-icon {
         background-color: lightgray;
@@ -111,10 +126,39 @@ main {
       grid-template-columns: repeat(3, 1fr);
       column-gap: 2rem;
       padding: 5rem 8rem;
+      @media (max-width: 1150px) {
+        padding: 4rem 2rem;
+      }
+      @media (max-width: 1000px) {
+        column-gap: 0.2rem;
+      }
+      @media (max-width: 850px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        row-gap: 2rem;
+        justify-items: center;
+        align-items: center;
+        padding: 4rem 20rem;
+      }
+      @media (max-width: 750px) {
+        padding: 4rem 15rem;
+      }
+      @media (max-width: 650px) {
+        padding: 4rem 10rem;
+      }
+      @media (max-width: 550px) {
+        padding: 4rem 5rem;
+      }
+      @media (max-width: 450px) {
+        padding: 4rem 2rem;
+      }
       & .user-showcase {
         display: flex;
         flex-direction: column;
         align-items: center;
+        @media (max-width: 850px) {
+          width: 100%;
+        }
         // justify-content: space-between;
         & .showcase {
           display: flex;
@@ -176,6 +220,9 @@ main {
         display: flex;
         flex-direction: column;
         // justify-content: space-between;
+        @media (max-width: 850px) {
+          width: 100%;
+        }
         & h2 {
           font-size: 3rem;
           margin-bottom: 2rem;
@@ -211,6 +258,12 @@ main {
           flex-direction: column;
           width: 50%;
           margin: 0 auto 0 5rem;
+          @media (max-width: 1300px) {
+            width: 60%;
+          }
+          @media (max-width: 1100px) {
+            width: 65%;
+          }
           & .form-control {
             display: flex;
             flex-direction: column;
@@ -243,9 +296,22 @@ main {
         & .user-btn {
           @include btn(1.5rem 3rem, 8rem auto 0rem 5rem);
           width: 50%;
+          @media (max-width: 1000px) {
+            width: 60%;
+          }
+          @media (max-width: 850px) {
+            @include btn(1.5rem 3rem, 8rem auto 0rem auto);
+            width: 50%;
+          }
+          @media (max-width: 350px) {
+            width: 60%;
+          }
         }
       }
       & .user-permissions {
+        @media (max-width: 850px) {
+          width: 100%;
+        }
         & > div {
           display: flex;
           align-items: center;
@@ -278,12 +344,88 @@ main {
             border: none;
           }
         }
+        & .permissions-container {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          & ul {
+            list-style: none;
+            margin: 1rem 0rem;
+            width: 100%;
+            border-bottom: 0.2rem darkgray solid;
+            padding-bottom: 2rem;
+
+            & .ul-header {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              cursor: pointer;
+              & h4 {
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: center;
+                & span {
+                  font-size: 1.6rem;
+                }
+                & .react-icon {
+                  font-size: 2.2rem;
+                  margin-right: 0.5rem;
+                }
+              }
+            }
+            & .li-container.active {
+              display: block;
+            }
+            & .li-container {
+              display: none;
+              & li {
+                font-size: 1.25rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: 0.7rem 0rem;
+                padding-left: 3rem;
+                & .user-status-btn.active {
+                  background-color: #add8e6;
+                }
+                & .user-status-btn.inactive {
+                  background-color: #f08080;
+                }
+                & .user-status-btn {
+                  @include toggler;
+                  outline: none;
+                  border: none;
+                }
+                & p {
+                  & .react-icon {
+                    margin-right: 1rem;
+                    font-size: 0.7rem;
+                  }
+                  & span {
+                    font-weight: 350;
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
   & #home {
     position: relative;
     & header {
+      @media (max-width: 600px) {
+        padding-bottom: 6rem;
+      }
+      @media (max-width: 400px) {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 4rem;
+        & h1 {
+          margin-bottom: 2rem;
+        }
+      }
       & .form-control {
         display: flex;
         align-items: center;
@@ -308,9 +450,31 @@ main {
     }
     & .container {
       width: 100%;
-      height: 70rem;
-      background-color: #fbfbfb;
+      height: 100vh;
+      background-color: #f0f0f0;
       padding: 8rem 12rem;
+      overflow-y: auto;
+      @media (max-width: 1100px) {
+        padding: 8rem;
+      }
+      @media (max-width: 1000px) {
+        padding: 4rem;
+      }
+      @media (max-width: 800px) {
+        padding: 4rem 1rem;
+      }
+      @media (max-width: 600px) {
+        padding: 4rem 10rem;
+      }
+      @media (max-width: 550px) {
+        padding: 4rem 7rem;
+      }
+      @media (max-width: 450px) {
+        padding: 4rem;
+      }
+      @media (max-width: 350px) {
+        padding: 4rem 2rem;
+      }
       & .container-header h4:nth-child(1) {
         justify-self: flex-start;
       }
@@ -324,6 +488,18 @@ main {
         justify-items: center;
         border-bottom: 0.25rem darkgray solid;
         padding-bottom: 2rem;
+        @media (max-width: 800px) {
+          grid-template-columns: 35% 25% 15% 15%;
+        }
+        @media (max-width: 700px) {
+          grid-template-columns: 40% 25% 15% 15%;
+        }
+        @media (max-width: 650px) {
+          grid-template-columns: 40% 25% 15% 15%;
+        }
+        @media (max-width: 600px) {
+          display: none;
+        }
         & .active {
           color: black;
         }
@@ -344,6 +520,25 @@ main {
           margin: 1rem 0rem;
           justify-items: center;
           align-items: center;
+          @media (max-width: 800px) {
+            grid-template-columns: 35% 25% 15% 15%;
+          }
+          @media (max-width: 700px) {
+            grid-template-columns: 40% 25% 15% 15%;
+          }
+          @media (max-width: 650px) {
+            grid-template-columns: 40% 25% 15% 15%;
+          }
+          @media (max-width: 600px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(4, 1fr);
+            row-gap: 1rem;
+            justify-items: flex-start;
+            padding: 1.5rem 2rem;
+            box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem,
+              rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem;
+            border-radius: 1rem;
+          }
           & .user-role {
             display: flex;
             align-items: center;
@@ -382,6 +577,9 @@ main {
           }
           & .user-actions {
             justify-self: flex-end;
+            @media (max-width: 600px) {
+              justify-self: inherit;
+            }
             & .react-icon {
               margin: 0 0.5rem;
               font-size: 1.55rem;
@@ -428,9 +626,31 @@ main {
         background-color: white;
         padding: 5rem 6rem;
         position: relative;
+        @media (max-width: 600px) {
+          width: 80%;
+        }
+        @media (max-width: 500px) {
+          padding: 4rem;
+        }
+
         & form {
           display: flex;
           flex-direction: column;
+          @media (max-width: 600px) {
+            & .react-icon {
+              display: none;
+            }
+            & .form-container:nth-child(1) {
+              flex-direction: column;
+              & .form-control {
+                margin: 2rem 0rem;
+                width: 100%;
+                & input {
+                  width: 100%;
+                }
+              }
+            }
+          }
           & .form-container {
             display: flex;
             align-items: center;

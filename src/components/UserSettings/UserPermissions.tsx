@@ -1,9 +1,11 @@
 import React from "react";
-import { User } from "../../reducer/reducer";
+import { MessageStatus, User } from "../../reducer/reducer";
 import { useAppContext } from "../../context/context";
+import Permissions from "./Permissions";
 
 const UserPermissions: React.FC<User> = (props) => {
-  const { toggleUserPermissions } = useAppContext();
+  const { toggleUserPermissions, activateMessage } = useAppContext();
+
   return (
     <div className="user-permissions">
       <div>
@@ -24,14 +26,25 @@ const UserPermissions: React.FC<User> = (props) => {
           }
           onClick={() => {
             toggleUserPermissions(props.id, "superAdmin", undefined);
+            activateMessage(
+              MessageStatus.SUCCESS,
+              "Permissions have been successfully changed."
+            );
           }}
         >
-          <button
+          <div
             className={
               props.superAdmin === true ? "btn active" : "btn inactive"
             }
-          ></button>
+          ></div>
         </button>
+      </div>
+      <div className="permissions-container">
+        <Permissions
+          permissions={props.permissions}
+          id={props.id}
+          status={props.status}
+        />
       </div>
     </div>
   );

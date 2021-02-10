@@ -13,7 +13,7 @@ const SingleUser: React.FC<User> = (props) => {
     <div className="user">
       <div className="user-name">
         <figure className="icon">
-          <FaUserCircle className="react-icon user" />
+          <FaUserCircle className="react-icon user-circle" />
         </figure>
         <div className="content">
           <h3>

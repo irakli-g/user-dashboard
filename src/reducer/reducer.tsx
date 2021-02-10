@@ -229,6 +229,23 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
             ...item,
             superAdmin: !item.superAdmin,
           };
+        } else if (action.payload.kind === "subPermission") {
+          let tempPermissions = item.permissions.map((permissionGroup) => {
+            return permissionGroup.map((permission) => {
+              if (permission.id === action.payload.permissionId) {
+                return {
+                  ...permission,
+                  status: !permission.status,
+                };
+              } else {
+                return permission;
+              }
+            });
+          });
+          return {
+            ...item,
+            permissions: tempPermissions,
+          };
         }
         return item;
       } else {

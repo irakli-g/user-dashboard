@@ -5,6 +5,9 @@
 
 html {
   font-size: 62.5%; }
+  @media (max-width: 900px) {
+    html {
+      font-size: 55%; } }
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
@@ -13,7 +16,7 @@ main {
   position: relative;
   overflow-x: hidden; }
   main .message-modal {
-    position: absolute;
+    position: fixed;
     z-index: 100;
     top: 6rem;
     right: 0;
@@ -84,6 +87,18 @@ main {
           cursor: pointer; }
   main #user header h1 {
     margin: 0 auto 0 40rem; }
+    @media (max-width: 1300px) {
+      main #user header h1 {
+        margin: 0 auto 0 30rem; } }
+    @media (max-width: 800px) {
+      main #user header h1 {
+        margin: 0 auto 0 20rem; } }
+    @media (max-width: 450px) {
+      main #user header h1 {
+        margin: 0 auto 0 15rem; } }
+    @media (max-width: 350px) {
+      main #user header h1 {
+        margin: 0 auto 0 10rem; } }
   main #user header .header-icon {
     background-color: lightgray;
     cursor: default; }
@@ -94,10 +109,39 @@ main {
     grid-template-columns: repeat(3, 1fr);
     column-gap: 2rem;
     padding: 5rem 8rem; }
+    @media (max-width: 1150px) {
+      main #user .container {
+        padding: 4rem 2rem; } }
+    @media (max-width: 1000px) {
+      main #user .container {
+        column-gap: 0.2rem; } }
+    @media (max-width: 850px) {
+      main #user .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        row-gap: 2rem;
+        justify-items: center;
+        align-items: center;
+        padding: 4rem 20rem; } }
+    @media (max-width: 750px) {
+      main #user .container {
+        padding: 4rem 15rem; } }
+    @media (max-width: 650px) {
+      main #user .container {
+        padding: 4rem 10rem; } }
+    @media (max-width: 550px) {
+      main #user .container {
+        padding: 4rem 5rem; } }
+    @media (max-width: 450px) {
+      main #user .container {
+        padding: 4rem 2rem; } }
     main #user .container .user-showcase {
       display: flex;
       flex-direction: column;
       align-items: center; }
+      @media (max-width: 850px) {
+        main #user .container .user-showcase {
+          width: 100%; } }
       main #user .container .user-showcase .showcase {
         display: flex;
         flex-direction: column;
@@ -160,6 +204,9 @@ main {
     main #user .container .user-details {
       display: flex;
       flex-direction: column; }
+      @media (max-width: 850px) {
+        main #user .container .user-details {
+          width: 100%; } }
       main #user .container .user-details h2 {
         font-size: 3rem;
         margin-bottom: 2rem; }
@@ -222,6 +269,12 @@ main {
         flex-direction: column;
         width: 50%;
         margin: 0 auto 0 5rem; }
+        @media (max-width: 1300px) {
+          main #user .container .user-details form {
+            width: 60%; } }
+        @media (max-width: 1100px) {
+          main #user .container .user-details form {
+            width: 65%; } }
         main #user .container .user-details form .form-control {
           display: flex;
           flex-direction: column;
@@ -262,6 +315,33 @@ main {
           box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
         main #user .container .user-details .user-btn:active {
           transform: scale(0.97); }
+        @media (max-width: 1000px) {
+          main #user .container .user-details .user-btn {
+            width: 60%; } }
+        @media (max-width: 850px) {
+          main #user .container .user-details .user-btn {
+            background-color: darkblue;
+            color: white;
+            font-weight: bold;
+            border-radius: 3rem;
+            padding: 1.5rem 3rem;
+            margin: 8rem auto 0rem auto;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            transition: 0.2s all ease-in-out;
+            box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
+            width: 50%; }
+            main #user .container .user-details .user-btn:hover {
+              box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
+            main #user .container .user-details .user-btn:active {
+              transform: scale(0.97); } }
+        @media (max-width: 350px) {
+          main #user .container .user-details .user-btn {
+            width: 60%; } }
+    @media (max-width: 850px) {
+      main #user .container .user-permissions {
+        width: 100%; } }
     main #user .container .user-permissions > div {
       display: flex;
       align-items: center;
@@ -307,8 +387,87 @@ main {
           border: none;
           outline: none;
           cursor: pointer; }
+    main #user .container .user-permissions .permissions-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start; }
+      main #user .container .user-permissions .permissions-container ul {
+        list-style: none;
+        margin: 1rem 0rem;
+        width: 100%;
+        border-bottom: 0.2rem darkgray solid;
+        padding-bottom: 2rem; }
+        main #user .container .user-permissions .permissions-container ul .ul-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          cursor: pointer; }
+          main #user .container .user-permissions .permissions-container ul .ul-header h4 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center; }
+            main #user .container .user-permissions .permissions-container ul .ul-header h4 span {
+              font-size: 1.6rem; }
+            main #user .container .user-permissions .permissions-container ul .ul-header h4 .react-icon {
+              font-size: 2.2rem;
+              margin-right: 0.5rem; }
+        main #user .container .user-permissions .permissions-container ul .li-container.active {
+          display: block; }
+        main #user .container .user-permissions .permissions-container ul .li-container {
+          display: none; }
+          main #user .container .user-permissions .permissions-container ul .li-container li {
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0.7rem 0rem;
+            padding-left: 3rem; }
+            main #user .container .user-permissions .permissions-container ul .li-container li .user-status-btn.active {
+              background-color: #add8e6; }
+            main #user .container .user-permissions .permissions-container ul .li-container li .user-status-btn.inactive {
+              background-color: #f08080; }
+            main #user .container .user-permissions .permissions-container ul .li-container li .user-status-btn {
+              width: 5rem;
+              padding: 1.2rem;
+              box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
+              border-radius: 3rem;
+              cursor: pointer;
+              position: relative;
+              outline: none;
+              border: none; }
+              main #user .container .user-permissions .permissions-container ul .li-container li .user-status-btn .btn.active {
+                background-color: #0389b6;
+                transform: translateX(2.5rem); }
+              main #user .container .user-permissions .permissions-container ul .li-container li .user-status-btn .btn.inactive {
+                background-color: #cc0000;
+                transform: translateX(0rem); }
+              main #user .container .user-permissions .permissions-container ul .li-container li .user-status-btn .btn {
+                position: absolute;
+                padding: 1.2rem;
+                top: 0;
+                left: 0;
+                transition: 0.2s all;
+                border-radius: 50%;
+                border: none;
+                outline: none;
+                cursor: pointer; }
+            main #user .container .user-permissions .permissions-container ul .li-container li p .react-icon {
+              margin-right: 1rem;
+              font-size: 0.7rem; }
+            main #user .container .user-permissions .permissions-container ul .li-container li p span {
+              font-weight: 350; }
   main #home {
     position: relative; }
+    @media (max-width: 600px) {
+      main #home header {
+        padding-bottom: 6rem; } }
+    @media (max-width: 400px) {
+      main #home header {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 4rem; }
+        main #home header h1 {
+          margin-bottom: 2rem; } }
     main #home header .form-control {
       display: flex;
       align-items: center;
@@ -328,9 +487,31 @@ main {
         font-style: italic; }
     main #home .container {
       width: 100%;
-      height: 70rem;
-      background-color: #fbfbfb;
-      padding: 8rem 12rem; }
+      height: 100vh;
+      background-color: #f0f0f0;
+      padding: 8rem 12rem;
+      overflow-y: auto; }
+      @media (max-width: 1100px) {
+        main #home .container {
+          padding: 8rem; } }
+      @media (max-width: 1000px) {
+        main #home .container {
+          padding: 4rem; } }
+      @media (max-width: 800px) {
+        main #home .container {
+          padding: 4rem 1rem; } }
+      @media (max-width: 600px) {
+        main #home .container {
+          padding: 4rem 10rem; } }
+      @media (max-width: 550px) {
+        main #home .container {
+          padding: 4rem 7rem; } }
+      @media (max-width: 450px) {
+        main #home .container {
+          padding: 4rem; } }
+      @media (max-width: 350px) {
+        main #home .container {
+          padding: 4rem 2rem; } }
       main #home .container .container-header h4:nth-child(1) {
         justify-self: flex-start; }
       main #home .container .container-header h4:nth-child(4) {
@@ -342,6 +523,18 @@ main {
         justify-items: center;
         border-bottom: 0.25rem darkgray solid;
         padding-bottom: 2rem; }
+        @media (max-width: 800px) {
+          main #home .container .container-header {
+            grid-template-columns: 35% 25% 15% 15%; } }
+        @media (max-width: 700px) {
+          main #home .container .container-header {
+            grid-template-columns: 40% 25% 15% 15%; } }
+        @media (max-width: 650px) {
+          main #home .container .container-header {
+            grid-template-columns: 40% 25% 15% 15%; } }
+        @media (max-width: 600px) {
+          main #home .container .container-header {
+            display: none; } }
         main #home .container .container-header .active {
           color: black; }
         main #home .container .container-header h4 {
@@ -359,6 +552,24 @@ main {
           margin: 1rem 0rem;
           justify-items: center;
           align-items: center; }
+          @media (max-width: 800px) {
+            main #home .container .container-users .user {
+              grid-template-columns: 35% 25% 15% 15%; } }
+          @media (max-width: 700px) {
+            main #home .container .container-users .user {
+              grid-template-columns: 40% 25% 15% 15%; } }
+          @media (max-width: 650px) {
+            main #home .container .container-users .user {
+              grid-template-columns: 40% 25% 15% 15%; } }
+          @media (max-width: 600px) {
+            main #home .container .container-users .user {
+              grid-template-columns: 1fr;
+              grid-template-rows: repeat(4, 1fr);
+              row-gap: 1rem;
+              justify-items: flex-start;
+              padding: 1.5rem 2rem;
+              box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem;
+              border-radius: 1rem; } }
           main #home .container .container-users .user .user-role {
             display: flex;
             align-items: center; }
@@ -387,6 +598,9 @@ main {
                 font-size: 4rem; }
           main #home .container .container-users .user .user-actions {
             justify-self: flex-end; }
+            @media (max-width: 600px) {
+              main #home .container .container-users .user .user-actions {
+                justify-self: inherit; } }
             main #home .container .container-users .user .user-actions .react-icon {
               margin: 0 0.5rem;
               font-size: 1.55rem;
@@ -443,9 +657,25 @@ main {
         background-color: white;
         padding: 5rem 6rem;
         position: relative; }
+        @media (max-width: 600px) {
+          main #home .user-modal .modal-container {
+            width: 80%; } }
+        @media (max-width: 500px) {
+          main #home .user-modal .modal-container {
+            padding: 4rem; } }
         main #home .user-modal .modal-container form {
           display: flex;
           flex-direction: column; }
+          @media (max-width: 600px) {
+            main #home .user-modal .modal-container form .react-icon {
+              display: none; }
+            main #home .user-modal .modal-container form .form-container:nth-child(1) {
+              flex-direction: column; }
+              main #home .user-modal .modal-container form .form-container:nth-child(1) .form-control {
+                margin: 2rem 0rem;
+                width: 100%; }
+                main #home .user-modal .modal-container form .form-container:nth-child(1) .form-control input {
+                  width: 100%; } }
           main #home .user-modal .modal-container form .form-container {
             display: flex;
             align-items: center;
