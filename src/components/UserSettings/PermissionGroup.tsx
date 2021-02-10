@@ -4,6 +4,7 @@ import { BiChevronDown } from "react-icons/bi";
 import { useAppContext } from "../../context/context";
 import { MessageStatus } from "../../reducer/reducer";
 import { BsCircleFill } from "react-icons/bs";
+import { stat } from "fs";
 
 interface Props {
   permissions: UserPermission[];
@@ -13,30 +14,23 @@ interface Props {
 }
 
 const PermissionGroup: React.FC<Props> = (props) => {
-  const getGroupPermission = () => {
-    let permission = true;
-    if (typeof window !== "undefined") {
-      if (localStorage.getItem(`groupPermission ${props.index + 1}`) !== null) {
-        permission = JSON.parse(
-          localStorage.getItem(`groupPermission ${props.index + 1}`)!
-        );
-      }
+  const statusArr = props.permissions.map((item) => item.status);
+  const getGroupStatus = () => {
+    let status = true;
+    if (statusArr.indexOf(true) !== -1) {
+      status = true;
+    } else if (statusArr.indexOf(true) === -1) {
+      status = false;
     }
-    return permission;
+    return status;
   };
 
   const { activateMessage, toggleUserPermissions } = useAppContext();
   const [expand, setExpand] = useState<boolean>(false);
-  const [groupStatus, setGroupStatus] = useState<boolean>(getGroupPermission());
-
+  const [groupStatus, setGroupStatus] = useState<boolean>(getGroupStatus());
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(
-        `groupPermission ${props.index + 1}`,
-        JSON.stringify(groupStatus)
-      );
-    }
-  }, [groupStatus]);
+    setGroupStatus(getGroupStatus());
+  }, [props.permissions]);
 
   return (
     <ul>
