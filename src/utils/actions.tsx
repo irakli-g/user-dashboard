@@ -65,6 +65,7 @@ interface ToggleUserPermissions {
     id: string | number;
     permissionId: string | number | undefined;
     kind: string;
+    groupPermissionStatus: boolean | undefined;
   };
 }
 

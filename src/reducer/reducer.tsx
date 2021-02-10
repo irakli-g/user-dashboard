@@ -1,3 +1,4 @@
+import PermissionGroup from "../components/UserSettings/PermissionGroup";
 import { Actions } from "../utils/actions";
 import { UserPermissions } from "../utils/permissions";
 
@@ -242,6 +243,34 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
               }
             });
           });
+          return {
+            ...item,
+            permissions: tempPermissions,
+          };
+        } else if (action.payload.kind === "groupPermission") {
+          let tempPermissions = item.permissions.map(
+            (permissionGroup, index) => {
+              if (index === action.payload.permissionId) {
+                let newGroupPermissions = permissionGroup.map((item) => {
+                  if (action.payload.groupPermissionStatus === false) {
+                    return {
+                      ...item,
+                      status: true,
+                    };
+                  } else if (action.payload.groupPermissionStatus === true) {
+                    return {
+                      ...item,
+                      status: false,
+                    };
+                  }
+                  return item;
+                });
+                return newGroupPermissions;
+              } else {
+                return permissionGroup;
+              }
+            }
+          );
           return {
             ...item,
             permissions: tempPermissions,

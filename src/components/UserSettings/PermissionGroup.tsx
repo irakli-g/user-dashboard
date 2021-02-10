@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { UserPermission } from "../../utils/permissions";
 import { BiChevronDown } from "react-icons/bi";
 import { useAppContext } from "../../context/context";
@@ -13,21 +13,69 @@ interface Props {
 }
 
 const PermissionGroup: React.FC<Props> = (props) => {
+  const getGroupPermission = () => {
+    let permission = true;
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem(`groupPermission ${props.index + 1}`) !== null) {
+        permission = JSON.parse(
+          localStorage.getItem(`groupPermission ${props.index + 1}`)!
+        );
+      }
+    }
+    return permission;
+  };
+
   const { activateMessage, toggleUserPermissions } = useAppContext();
   const [expand, setExpand] = useState<boolean>(false);
+  const [groupStatus, setGroupStatus] = useState<boolean>(getGroupPermission());
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `groupPermission ${props.index + 1}`,
+        JSON.stringify(groupStatus)
+      );
+    }
+  }, [groupStatus]);
 
   return (
     <ul>
-      <div
-        className="ul-header"
-        onClick={() => {
-          setExpand(!expand);
-        }}
-      >
-        <h4 className={props.status ? undefined : "user-p inactive"}>
+      <div className="ul-header">
+        <h4
+          className={props.status ? undefined : "user-p inactive"}
+          onClick={() => {
+            setExpand(!expand);
+          }}
+        >
           <BiChevronDown className="react-icon down" />
           <span>Permission Group {props.index + 1}</span>
         </h4>
+        <button
+          style={!props.status ? { opacity: 0.3 } : undefined}
+          disabled={!props.status}
+          className={
+            groupStatus === true
+              ? "user-status-btn active"
+              : "user-status-btn inactive"
+          }
+          onClick={() => {
+            setGroupStatus(!groupStatus);
+            toggleUserPermissions(
+              props.id,
+              "groupPermission",
+              props.index,
+              groupStatus
+            );
+            activateMessage(
+              MessageStatus.SUCCESS,
+              "Permissions have been successfully changed."
+            );
+          }}
+        >
+          <div
+            className={groupStatus === true ? "btn active" : "btn inactive"}
+          ></div>
+        </button>
       </div>
       <div className={expand ? "li-container active" : "li-container"}>
         {props.permissions.map((item) => {
@@ -51,7 +99,12 @@ const PermissionGroup: React.FC<Props> = (props) => {
                     : "user-status-btn inactive"
                 }
                 onClick={() => {
-                  toggleUserPermissions(props.id, "subPermission", item.id);
+                  toggleUserPermissions(
+                    props.id,
+                    "subPermission",
+                    item.id,
+                    undefined
+                  );
                   activateMessage(
                     MessageStatus.SUCCESS,
                     "Permissions have been successfully changed."

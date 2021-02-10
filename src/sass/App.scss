@@ -31,6 +31,9 @@ main {
     display: flex;
     align-items: center;
     padding: 1rem 2rem;
+    @media (max-width: 350px) {
+      padding: 1rem;
+    }
     & .message-content {
       color: white;
       font-size: 1.35rem;
@@ -47,18 +50,27 @@ main {
     opacity: 1;
     visibility: visible;
     transform: translateX(-2rem);
+    @media (max-width: 350px) {
+      transform: translateX(-1rem);
+    }
   }
   & .message-modal.warning {
     background-color: #ffe700;
     opacity: 1;
     visibility: visible;
     transform: translateX(-2rem);
+    @media (max-width: 350px) {
+      transform: translateX(-1rem);
+    }
   }
   & .message-modal.success {
     background-color: rgb(0, 201, 0);
     opacity: 1;
     visibility: visible;
     transform: translateX(-2rem);
+    @media (max-width: 350px) {
+      transform: translateX(-1rem);
+    }
   }
   & #user,
   #home {
@@ -359,11 +371,22 @@ main {
               display: flex;
               align-items: center;
               justify-content: space-between;
-              cursor: pointer;
+              & .user-status-btn.active {
+                background-color: lightblue;
+              }
+              & .user-status-btn.inactive {
+                background-color: lightcoral;
+              }
+              & .user-status-btn {
+                @include toggler;
+                outline: none;
+                border: none;
+              }
               & h4 {
                 margin-bottom: 1rem;
                 display: flex;
                 align-items: center;
+                cursor: pointer;
                 & span {
                   font-size: 1.6rem;
                 }
@@ -517,7 +540,9 @@ main {
         & .user {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          margin: 1rem 0rem;
+          margin: 2rem 0rem;
+          border-bottom: 0.2rem solid darkgray;
+          padding-bottom: 1.5rem;
           justify-items: center;
           align-items: center;
           @media (max-width: 800px) {
@@ -530,6 +555,7 @@ main {
             grid-template-columns: 40% 25% 15% 15%;
           }
           @media (max-width: 600px) {
+            border-bottom: none;
             grid-template-columns: 1fr;
             grid-template-rows: repeat(4, 1fr);
             row-gap: 1rem;

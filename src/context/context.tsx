@@ -26,7 +26,8 @@ interface ContextInitialState extends InitialState {
   toggleUserPermissions: (
     id: string | number,
     kind: string,
-    permissionId: string | number | undefined
+    permissionId: string | number | undefined,
+    groupPermissionStatus: boolean | undefined
   ) => void;
 }
 
@@ -121,11 +122,12 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
   const toggleUserPermissions = (
     id: string | number,
     kind: string,
-    permissionId: string | number | undefined
+    permissionId: string | number | undefined,
+    groupPermissionStatus: boolean | undefined
   ) => {
     dispatch({
       type: "TOGGLE_USER_PERMISSIONS",
-      payload: { id, kind, permissionId },
+      payload: { id, kind, permissionId, groupPermissionStatus },
     });
   };
 

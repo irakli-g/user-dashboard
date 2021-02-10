@@ -25,7 +25,7 @@ const UserPermissions: React.FC<User> = (props) => {
               : "user-status-btn inactive"
           }
           onClick={() => {
-            toggleUserPermissions(props.id, "superAdmin", undefined);
+            toggleUserPermissions(props.id, "superAdmin", undefined, undefined);
             activateMessage(
               MessageStatus.SUCCESS,
               "Permissions have been successfully changed."
