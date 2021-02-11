@@ -19,13 +19,13 @@ const UserShowcase: React.FC<User> = (props) => {
         </p>
       </div>
       <div className="short-info">
-        <h3 className={props.status ? undefined : "user-p inactive"}>
+        <h3 style={!props.status ? { opacity: 0.3 } : undefined}>
           {props.firstName}
         </h3>
-        <h3 className={props.status ? undefined : "user-p inactive"}>
+        <h3 style={!props.status ? { opacity: 0.3 } : undefined}>
           {props.lastName}
         </h3>
-        <h4 className={props.status ? undefined : "user-p inactive"}>
+        <h4 style={!props.status ? { opacity: 0.3 } : undefined}>
           {props.email}
         </h4>
       </div>

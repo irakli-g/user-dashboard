@@ -13,7 +13,7 @@ const UserPermissions: React.FC<User> = (props) => {
         <p>{props.role}</p>
       </div>
       <div className="super-admin">
-        <h3 className={props.status ? undefined : "user-p inactive"}>
+        <h3 style={!props.status ? { opacity: 0.3 } : undefined}>
           Super Admin
         </h3>
         <button

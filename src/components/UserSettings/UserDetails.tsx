@@ -50,7 +50,7 @@ const UserDetails: React.FC<User> = (props) => {
         <div className="form-control">
           <label
             htmlFor="firstName"
-            className={props.status ? undefined : "user-p inactive"}
+            style={!props.status ? { opacity: 0.3 } : undefined}
           >
             * First Name
           </label>
@@ -60,7 +60,7 @@ const UserDetails: React.FC<User> = (props) => {
             id="firstName"
             pattern="^[a-zA-Z\s]+$"
             value={firstName}
-            className={props.status ? undefined : "user-p inactive"}
+            style={!props.status ? { opacity: 0.3 } : undefined}
             disabled={!props.status}
             onChange={(e) => {
               setFirstName(e.currentTarget.value);
@@ -70,7 +70,7 @@ const UserDetails: React.FC<User> = (props) => {
         <div className="form-control">
           <label
             htmlFor="lastName"
-            className={props.status ? undefined : "user-p inactive"}
+            style={!props.status ? { opacity: 0.3 } : undefined}
           >
             * Last Name
           </label>
@@ -80,7 +80,7 @@ const UserDetails: React.FC<User> = (props) => {
             id="lastName"
             pattern="^[a-zA-Z\s]+$"
             value={lastName}
-            className={props.status ? undefined : "user-p inactive"}
+            style={!props.status ? { opacity: 0.3 } : undefined}
             disabled={!props.status}
             onChange={(e) => {
               setLastName(e.currentTarget.value);
@@ -90,7 +90,7 @@ const UserDetails: React.FC<User> = (props) => {
         <div className="form-control">
           <label
             htmlFor="role"
-            className={props.status ? undefined : "user-p inactive"}
+            style={!props.status ? { opacity: 0.3 } : undefined}
           >
             * Role
           </label>
@@ -99,6 +99,7 @@ const UserDetails: React.FC<User> = (props) => {
             id="role"
             value={role}
             disabled={!props.status}
+            style={!props.status ? { opacity: 0.3 } : undefined}
             onChange={(e) => {
               setRole(e.currentTarget.value);
             }}

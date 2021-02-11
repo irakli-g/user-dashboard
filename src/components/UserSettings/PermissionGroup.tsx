@@ -36,7 +36,7 @@ const PermissionGroup: React.FC<Props> = (props) => {
     <ul>
       <div className="ul-header">
         <h4
-          className={props.status ? undefined : "user-p inactive"}
+          style={!props.status ? { opacity: 0.3 } : undefined}
           onClick={() => {
             setExpand(!expand);
           }}
@@ -75,7 +75,7 @@ const PermissionGroup: React.FC<Props> = (props) => {
         {props.permissions.map((item) => {
           return (
             <li key={item.id}>
-              <p className={props.status ? undefined : "user-p inactive"}>
+              <p style={!props.status ? { opacity: 0.3 } : undefined}>
                 <BsCircleFill
                   className="react-icon circle"
                   style={

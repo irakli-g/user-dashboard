@@ -6,6 +6,7 @@ import {
   reducer,
   User,
 } from "../reducer/reducer";
+import { dummyUsers } from "../utils/dummyData";
 
 interface ContextInitialState extends InitialState {
   addUser: (values: User) => void;
@@ -32,7 +33,7 @@ interface ContextInitialState extends InitialState {
 }
 
 const getUsersFromStorage = () => {
-  let users: User[] = [];
+  let users = dummyUsers;
   if (typeof window !== "undefined") {
     if (localStorage.getItem("users") !== null) {
       users = JSON.parse(localStorage.getItem("users")!);

@@ -13,18 +13,28 @@ const SingleUser: React.FC<User> = (props) => {
     <div className="user">
       <div className="user-name">
         <figure className="icon">
-          <FaUserCircle className="react-icon user-circle" />
+          <FaUserCircle
+            className="react-icon user-circle"
+            style={props.status === false ? { opacity: 0.3 } : undefined}
+          />
         </figure>
         <div className="content">
-          <h3>
+          <h3 style={props.status === false ? { opacity: 0.3 } : undefined}>
             {props.firstName} {props.lastName}
           </h3>
           <h4>{props.email}</h4>
         </div>
       </div>
       <div className="user-role">
-        {props.role === "admin" ? <BiKey className="react-icon key" /> : null}
-        <h4>{props.role}</h4>
+        {props.role === "admin" ? (
+          <BiKey
+            className="react-icon key"
+            style={props.status === false ? { opacity: 0.3 } : undefined}
+          />
+        ) : null}
+        <h4 style={props.status === false ? { opacity: 0.3 } : undefined}>
+          {props.role}
+        </h4>
       </div>
       <div
         className={

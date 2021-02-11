@@ -1,4 +1,3 @@
-import PermissionGroup from "../components/UserSettings/PermissionGroup";
 import { Actions } from "../utils/actions";
 import { UserPermissions } from "../utils/permissions";
 
