@@ -50,7 +50,10 @@ const SingleUser: React.FC<User> = (props) => {
       </div>
       <div className="user-actions">
         <Link to={`/user/${props.id}`}>
-          <VscGear className="react-icon gear" />
+          <VscGear
+            className="react-icon gear"
+            style={!props.status ? { display: "none" } : undefined}
+          />
         </Link>
         <FaTrash
           className="react-icon trash"
