@@ -9,13 +9,13 @@ const App: React.FC = () => {
   // console.log("rerender check");
 
   return (
-    <main>
+    <>
       <Message />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/user/:id" element={<UserSettings />} />
       </Routes>
-    </main>
+    </>
   );
 };
 

@@ -15,412 +15,408 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-main {
-  position: relative;
-  overflow-x: hidden;
-  & .message-modal {
-    position: fixed;
-    z-index: 100;
-    top: 6rem;
-    right: 0;
-    transform: translateX(15rem);
-    border-radius: 3rem;
-    transition: 0.4s all ease-in-out;
-    opacity: 0;
-    visibility: hidden;
+.message-modal {
+  position: fixed;
+  z-index: 100;
+  top: 6rem;
+  right: 0;
+  transform: translateX(15rem);
+  border-radius: 3rem;
+  transition: 0.4s all ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  @media (max-width: 350px) {
+    padding: 1rem;
+  }
+  & .message-content {
+    color: white;
+    font-size: 1.35rem;
+    font-weight: bold;
+  }
+  & .react-icon {
+    font-size: 2.5rem;
+    margin-right: 1rem;
+    color: white;
+  }
+}
+.message-modal.error {
+  background-color: rgb(212, 0, 0);
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-2rem);
+  @media (max-width: 350px) {
+    transform: translateX(-1rem);
+  }
+}
+.message-modal.warning {
+  background-color: #ffe700;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-2rem);
+  @media (max-width: 350px) {
+    transform: translateX(-1rem);
+  }
+}
+.message-modal.success {
+  background-color: rgb(0, 201, 0);
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-2rem);
+  @media (max-width: 350px) {
+    transform: translateX(-1rem);
+  }
+}
+#user,
+#home {
+  background-color: rgb(240, 240, 240);
+  & header {
+    background-color: white;
+    padding: 4rem 0rem;
     display: flex;
     align-items: center;
-    padding: 1rem 2rem;
-    @media (max-width: 350px) {
-      padding: 1rem;
+    justify-content: space-evenly;
+    position: relative;
+    box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem,
+      rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem;
+    & h1 {
+      font-size: 3rem;
     }
-    & .message-content {
-      color: white;
-      font-size: 1.35rem;
-      font-weight: bold;
-    }
-    & .react-icon {
-      font-size: 2.5rem;
-      margin-right: 1rem;
-      color: white;
-    }
-  }
-  & .message-modal.error {
-    background-color: rgb(212, 0, 0);
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-2rem);
-    @media (max-width: 350px) {
-      transform: translateX(-1rem);
-    }
-  }
-  & .message-modal.warning {
-    background-color: #ffe700;
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-2rem);
-    @media (max-width: 350px) {
-      transform: translateX(-1rem);
-    }
-  }
-  & .message-modal.success {
-    background-color: rgb(0, 201, 0);
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-2rem);
-    @media (max-width: 350px) {
-      transform: translateX(-1rem);
-    }
-  }
-  & #user,
-  #home {
-    background-color: rgb(240, 240, 240);
-    & header {
-      background-color: white;
-      padding: 4rem 0rem;
+    & .header-icon {
+      position: absolute;
+      left: 15%;
+      bottom: -20%;
+      z-index: 2;
+      background-color: rgb(0, 0, 199);
+      border-radius: 50%;
+      width: 6.5rem;
+      height: 6.5rem;
       display: flex;
       align-items: center;
-      justify-content: space-evenly;
-      position: relative;
-      box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem,
-        rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem;
-      & h1 {
-        font-size: 3rem;
-      }
-      & .header-icon {
-        position: absolute;
-        left: 15%;
-        bottom: -20%;
-        z-index: 2;
-        background-color: rgb(0, 0, 199);
-        border-radius: 50%;
-        width: 6.5rem;
-        height: 6.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      justify-content: center;
+      cursor: pointer;
+      & .react-icon {
+        font-size: 3.5rem;
+        color: white;
         cursor: pointer;
-        & .react-icon {
-          font-size: 3.5rem;
-          color: white;
-          cursor: pointer;
-        }
       }
     }
   }
-  & #user {
-    & header {
-      & h1 {
-        margin: 0 auto 0 40rem;
-        @media (max-width: 1300px) {
-          margin: 0 auto 0 30rem;
+}
+#user {
+  & header {
+    & h1 {
+      margin: 0 auto 0 40rem;
+      @media (max-width: 1300px) {
+        margin: 0 auto 0 30rem;
+      }
+      @media (max-width: 800px) {
+        margin: 0 auto 0 20rem;
+      }
+      @media (max-width: 450px) {
+        margin: 0 auto 0 15rem;
+      }
+      @media (max-width: 350px) {
+        margin: 0 auto 0 10rem;
+      }
+    }
+    & .header-icon {
+      background-color: lightgray;
+      cursor: default;
+      & .react-icon {
+        cursor: default;
+      }
+    }
+  }
+  & .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
+    padding: 5rem 8rem;
+    @media (max-width: 1150px) {
+      padding: 4rem 2rem;
+    }
+    @media (max-width: 1000px) {
+      column-gap: 0.2rem;
+    }
+    @media (max-width: 850px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, 1fr);
+      row-gap: 2rem;
+      justify-items: center;
+      align-items: center;
+      padding: 4rem 20rem;
+    }
+    @media (max-width: 750px) {
+      padding: 4rem 15rem;
+    }
+    @media (max-width: 650px) {
+      padding: 4rem 10rem;
+    }
+    @media (max-width: 550px) {
+      padding: 4rem 5rem;
+    }
+    @media (max-width: 450px) {
+      padding: 4rem 2rem;
+    }
+    & .user-showcase {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      @media (max-width: 850px) {
+        width: 100%;
+      }
+      // justify-content: space-between;
+      & .showcase {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        & p {
+          font-size: 1.8rem;
+          margin: 1rem 0rem 2rem 0rem;
+          text-transform: uppercase;
+          color: darkgray;
         }
-        @media (max-width: 800px) {
-          margin: 0 auto 0 20rem;
-        }
-        @media (max-width: 450px) {
-          margin: 0 auto 0 15rem;
-        }
-        @media (max-width: 350px) {
-          margin: 0 auto 0 10rem;
+        & .user-photo {
+          position: relative;
+          & .react-icon.key {
+            position: absolute;
+            z-index: 2;
+            font-size: 3rem;
+            background-color: rgb(142, 0, 207);
+            color: white;
+            border-radius: 2rem;
+            width: 5rem;
+            bottom: 3rem;
+            right: 1rem;
+          }
+          & .react-icon.user {
+            font-size: 20rem;
+          }
         }
       }
-      & .header-icon {
-        background-color: lightgray;
-        cursor: default;
-        & .react-icon {
-          cursor: default;
+      & .short-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        & h3 {
+          color: black;
+          text-transform: uppercase;
+          font-size: 2.5rem;
+          overflow-x: auto;
+          width: 30rem;
+          text-align: center;
+        }
+        & h4 {
+          margin: 1rem 0rem;
+          color: darkgray;
+          font-size: 1.25rem;
+          overflow-x: auto;
+        }
+      }
+      & .user-btn {
+        @include btn(1.5rem 3rem, 2rem 0rem 0rem 0rem);
+        background-color: rgb(78, 145, 233);
+      }
+    }
+    & .user-details {
+      display: flex;
+      flex-direction: column;
+      // justify-content: space-between;
+      @media (max-width: 850px) {
+        width: 100%;
+      }
+      & h2 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+      }
+      & .user-status-container {
+        display: flex;
+        align-items: center;
+        margin: 1rem 0rem 3rem 0rem;
+        & p {
+          margin-left: 1rem;
+          font-size: 1.6rem;
+          & span {
+            color: black;
+            transition: 0.2s all;
+            font-weight: bold;
+          }
+        }
+        & .user-status.active {
+          background-color: lightblue;
+        }
+        & .user-status.inactive {
+          background-color: lightcoral;
+        }
+        & .user-status {
+          @include toggler;
+        }
+        & .back-btn {
+          @include btn(0.4rem 1rem, 0rem 0rem 0rem 1rem);
+        }
+      }
+      & form {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        margin: 0 auto 0 5rem;
+        @media (max-width: 1300px) {
+          width: 60%;
+        }
+        @media (max-width: 1100px) {
+          width: 65%;
+        }
+        & .form-control {
+          display: flex;
+          flex-direction: column;
+          margin: 1rem 0rem;
+          & select {
+            border: none;
+            outline: none;
+            padding: 0.25rem 2rem 0.25rem 0rem;
+            border-bottom: 0.2rem darkgray solid;
+            cursor: pointer;
+            background-color: transparent;
+          }
+          & label {
+            color: blue;
+            margin-bottom: 0.5rem;
+          }
+          & input {
+            border: none;
+            outline: none;
+            padding: 0.25rem 0rem;
+            border-bottom: 0.2rem darkgray solid;
+            transition: 0.2s all;
+            background-color: transparent;
+          }
+        }
+      }
+      & .user-btn {
+        @include btn(1.5rem 3rem, 8rem auto 0rem 5rem);
+        width: 50%;
+        @media (max-width: 1000px) {
+          width: 60%;
+        }
+        @media (max-width: 850px) {
+          @include btn(1.5rem 3rem, 8rem auto 0rem auto);
+          width: 50%;
+        }
+        @media (max-width: 350px) {
+          width: 60%;
         }
       }
     }
-    & .container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      column-gap: 2rem;
-      padding: 5rem 8rem;
-      @media (max-width: 1150px) {
-        padding: 4rem 2rem;
-      }
-      @media (max-width: 1000px) {
-        column-gap: 0.2rem;
-      }
+    & .user-permissions {
       @media (max-width: 850px) {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(3, 1fr);
-        row-gap: 2rem;
-        justify-items: center;
-        align-items: center;
-        padding: 4rem 20rem;
+        width: 100%;
       }
-      @media (max-width: 750px) {
-        padding: 4rem 15rem;
-      }
-      @media (max-width: 650px) {
-        padding: 4rem 10rem;
-      }
-      @media (max-width: 550px) {
-        padding: 4rem 5rem;
-      }
-      @media (max-width: 450px) {
-        padding: 4rem 2rem;
-      }
-      & .user-showcase {
+      & > div {
         display: flex;
-        flex-direction: column;
         align-items: center;
-        @media (max-width: 850px) {
-          width: 100%;
-        }
-        // justify-content: space-between;
-        & .showcase {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          & p {
-            font-size: 1.8rem;
-            margin: 1rem 0rem 2rem 0rem;
-            text-transform: uppercase;
-            color: darkgray;
-          }
-          & .user-photo {
-            position: relative;
-            & .react-icon.key {
-              position: absolute;
-              z-index: 2;
-              font-size: 3rem;
-              background-color: rgb(142, 0, 207);
-              color: white;
-              border-radius: 2rem;
-              width: 5rem;
-              bottom: 3rem;
-              right: 1rem;
-            }
-            & .react-icon.user {
-              font-size: 20rem;
-            }
-          }
-        }
-        & .short-info {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          width: 100%;
-          & h3 {
-            color: black;
-            text-transform: uppercase;
-            font-size: 2.5rem;
-            overflow-x: auto;
-            width: 30rem;
-            text-align: center;
-          }
-          & h4 {
-            margin: 1rem 0rem;
-            color: darkgray;
-            font-size: 1.25rem;
-            overflow-x: auto;
-          }
-        }
-        & .user-btn {
-          @include btn(1.5rem 3rem, 2rem 0rem 0rem 0rem);
-          background-color: rgb(78, 145, 233);
-        }
-      }
-      & .user-details {
-        display: flex;
-        flex-direction: column;
-        // justify-content: space-between;
-        @media (max-width: 850px) {
-          width: 100%;
-        }
+        justify-content: space-between;
         & h2 {
           font-size: 3rem;
-          margin-bottom: 2rem;
         }
-        & .user-status-container {
-          display: flex;
-          align-items: center;
-          margin: 1rem 0rem 3rem 0rem;
-          & p {
-            margin-left: 1rem;
-            font-size: 1.6rem;
-            & span {
-              color: black;
-              transition: 0.2s all;
-              font-weight: bold;
-            }
-          }
-          & .user-status.active {
-            background-color: lightblue;
-          }
-          & .user-status.inactive {
-            background-color: lightcoral;
-          }
-          & .user-status {
-            @include toggler;
-          }
-          & .back-btn {
-            @include btn(0.4rem 1rem, 0rem 0rem 0rem 1rem);
-          }
-        }
-        & form {
-          display: flex;
-          flex-direction: column;
-          width: 50%;
-          margin: 0 auto 0 5rem;
-          @media (max-width: 1300px) {
-            width: 60%;
-          }
-          @media (max-width: 1100px) {
-            width: 65%;
-          }
-          & .form-control {
-            display: flex;
-            flex-direction: column;
-            margin: 1rem 0rem;
-            & select {
-              border: none;
-              outline: none;
-              padding: 0.25rem 2rem 0.25rem 0rem;
-              border-bottom: 0.2rem darkgray solid;
-              cursor: pointer;
-              background-color: transparent;
-            }
-            & label {
-              color: blue;
-              margin-bottom: 0.5rem;
-            }
-            & input {
-              border: none;
-              outline: none;
-              padding: 0.25rem 0rem;
-              border-bottom: 0.2rem darkgray solid;
-              transition: 0.2s all;
-              background-color: transparent;
-            }
-          }
-        }
-        & .user-btn {
-          @include btn(1.5rem 3rem, 8rem auto 0rem 5rem);
-          width: 50%;
-          @media (max-width: 1000px) {
-            width: 60%;
-          }
-          @media (max-width: 850px) {
-            @include btn(1.5rem 3rem, 8rem auto 0rem auto);
-            width: 50%;
-          }
-          @media (max-width: 350px) {
-            width: 60%;
-          }
+        & p {
+          font-size: 1.5rem;
+          font-weight: bold;
+          text-transform: capitalize;
         }
       }
-      & .user-permissions {
-        @media (max-width: 850px) {
+      & .super-admin {
+        margin: 2rem 0rem;
+        border-bottom: 0.2rem darkgray solid;
+        padding-bottom: 2rem;
+        & h3 {
+          font-size: 1.6rem;
+        }
+        & .user-status-btn.active {
+          background-color: lightblue;
+        }
+        & .user-status-btn.inactive {
+          background-color: lightcoral;
+        }
+        & .user-status-btn {
+          @include toggler;
+          outline: none;
+          border: none;
+        }
+      }
+      & .permissions-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        & ul {
+          list-style: none;
+          margin: 1rem 0rem;
           width: 100%;
-        }
-        & > div {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          & h2 {
-            font-size: 3rem;
-          }
-          & p {
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-transform: capitalize;
-          }
-        }
-        & .super-admin {
-          margin: 2rem 0rem;
           border-bottom: 0.2rem darkgray solid;
           padding-bottom: 2rem;
-          & h3 {
-            font-size: 1.6rem;
-          }
-          & .user-status-btn.active {
-            background-color: lightblue;
-          }
-          & .user-status-btn.inactive {
-            background-color: lightcoral;
-          }
-          & .user-status-btn {
-            @include toggler;
-            outline: none;
-            border: none;
-          }
-        }
-        & .permissions-container {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          & ul {
-            list-style: none;
-            margin: 1rem 0rem;
-            width: 100%;
-            border-bottom: 0.2rem darkgray solid;
-            padding-bottom: 2rem;
 
-            & .ul-header {
+          & .ul-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            & .user-status-btn.active {
+              background-color: lightblue;
+            }
+            & .user-status-btn.inactive {
+              background-color: lightcoral;
+            }
+            & .user-status-btn {
+              @include toggler;
+              outline: none;
+              border: none;
+            }
+            & h4 {
+              margin-bottom: 1rem;
+              display: flex;
+              align-items: center;
+              cursor: pointer;
+              & span {
+                font-size: 1.6rem;
+              }
+              & .react-icon {
+                font-size: 2.2rem;
+                margin-right: 0.5rem;
+              }
+            }
+          }
+          & .li-container.active {
+            display: block;
+          }
+          & .li-container {
+            display: none;
+            & li {
+              font-size: 1.25rem;
               display: flex;
               align-items: center;
               justify-content: space-between;
+              margin: 0.7rem 0rem;
+              padding-left: 3rem;
               & .user-status-btn.active {
-                background-color: lightblue;
+                background-color: #add8e6;
               }
               & .user-status-btn.inactive {
-                background-color: lightcoral;
+                background-color: #f08080;
               }
               & .user-status-btn {
                 @include toggler;
                 outline: none;
                 border: none;
               }
-              & h4 {
-                margin-bottom: 1rem;
-                display: flex;
-                align-items: center;
-                cursor: pointer;
-                & span {
-                  font-size: 1.6rem;
-                }
+              & p {
                 & .react-icon {
-                  font-size: 2.2rem;
-                  margin-right: 0.5rem;
+                  margin-right: 1rem;
+                  font-size: 0.7rem;
                 }
-              }
-            }
-            & .li-container.active {
-              display: block;
-            }
-            & .li-container {
-              display: none;
-              & li {
-                font-size: 1.25rem;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                margin: 0.7rem 0rem;
-                padding-left: 3rem;
-                & .user-status-btn.active {
-                  background-color: #add8e6;
-                }
-                & .user-status-btn.inactive {
-                  background-color: #f08080;
-                }
-                & .user-status-btn {
-                  @include toggler;
-                  outline: none;
-                  border: none;
-                }
-                & p {
-                  & .react-icon {
-                    margin-right: 1rem;
-                    font-size: 0.7rem;
-                  }
-                  & span {
-                    font-weight: 350;
-                  }
+                & span {
+                  font-weight: 350;
                 }
               }
             }
@@ -429,83 +425,117 @@ main {
       }
     }
   }
-  & #home {
-    position: relative;
-    & header {
-      @media (max-width: 600px) {
-        padding-bottom: 6rem;
-      }
-      @media (max-width: 400px) {
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 4rem;
-        & h1 {
-          margin-bottom: 2rem;
-        }
-      }
-      & .form-control {
-        display: flex;
-        align-items: center;
-        border-bottom: 0.2rem darkgray solid;
-        padding-bottom: 0.2rem;
-        & .react-icon {
-          font-size: 2rem;
-          margin-bottom: 0.2rem;
-          cursor: pointer;
-          transition: 0.2s all;
-          &:hover {
-            color: rgb(0, 0, 199);
-          }
-        }
-        & input {
-          border: none;
-          outline: none;
-          padding: 0.2rem;
-          font-style: italic;
-        }
+}
+#home {
+  position: relative;
+  & header {
+    @media (max-width: 600px) {
+      padding-bottom: 6rem;
+    }
+    @media (max-width: 400px) {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 4rem;
+      & h1 {
+        margin-bottom: 2rem;
       }
     }
-    & .container {
-      width: 100%;
-      height: 55rem;
-      overflow-y: auto;
-      background-color: #f0f0f0;
-      padding: 6rem 12rem;
-      overflow-y: auto;
-      @media (max-width: 1100px) {
-        padding: 6rem;
+    & .form-control {
+      display: flex;
+      align-items: center;
+      border-bottom: 0.2rem darkgray solid;
+      padding-bottom: 0.2rem;
+      & .react-icon {
+        font-size: 2rem;
+        margin-bottom: 0.2rem;
+        cursor: pointer;
+        transition: 0.2s all;
+        &:hover {
+          color: rgb(0, 0, 199);
+        }
       }
-      @media (max-width: 1000px) {
-        padding: 4rem;
+      & input {
+        border: none;
+        outline: none;
+        padding: 0.2rem;
+        font-style: italic;
       }
+    }
+  }
+  & .container {
+    width: 100%;
+    overflow-y: auto;
+    background-color: #f0f0f0;
+    padding: 5rem 12rem;
+    overflow-y: auto;
+    @media (max-width: 1100px) {
+      padding: 5rem 6rem;
+    }
+    @media (max-width: 1000px) {
+      padding: 4rem;
+    }
+    @media (max-width: 800px) {
+      padding: 4rem 1rem;
+    }
+    @media (max-width: 600px) {
+      padding: 4rem 10rem;
+    }
+    @media (max-width: 550px) {
+      padding: 4rem 7rem;
+    }
+    @media (max-width: 450px) {
+      padding: 4rem;
+    }
+    @media (max-width: 350px) {
+      padding: 4rem 2rem;
+    }
+    & .container-header h4:nth-child(1) {
+      justify-self: flex-start;
+    }
+    & .container-header h4:nth-child(4) {
+      justify-self: flex-end;
+    }
+    & .container-header {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: center;
+      justify-items: center;
+      border-bottom: 0.25rem darkgray solid;
+      padding-bottom: 2rem;
       @media (max-width: 800px) {
-        padding: 4rem 1rem;
+        grid-template-columns: 35% 25% 15% 15%;
+      }
+      @media (max-width: 700px) {
+        grid-template-columns: 40% 25% 15% 15%;
+      }
+      @media (max-width: 650px) {
+        grid-template-columns: 40% 25% 15% 15%;
       }
       @media (max-width: 600px) {
-        padding: 4rem 10rem;
+        display: none;
       }
-      @media (max-width: 550px) {
-        padding: 4rem 7rem;
+      & .active {
+        color: black;
       }
-      @media (max-width: 450px) {
-        padding: 4rem;
+      & h4 {
+        font-size: 1.55rem;
+        text-transform: uppercase;
+        cursor: pointer;
+        color: darkgray;
       }
-      @media (max-width: 350px) {
-        padding: 4rem 2rem;
-      }
-      & .container-header h4:nth-child(1) {
-        justify-self: flex-start;
-      }
-      & .container-header h4:nth-child(4) {
-        justify-self: flex-end;
-      }
-      & .container-header {
+    }
+    & .container-users {
+      display: flex;
+      flex-direction: column;
+      margin: 2rem 0rem;
+      & .user {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        align-items: center;
+        margin: 2rem 0rem;
+        border-bottom: 0.2rem solid darkgray;
+        padding-bottom: 1.5rem;
         justify-items: center;
-        border-bottom: 0.25rem darkgray solid;
-        padding-bottom: 2rem;
+        align-items: center;
         @media (max-width: 800px) {
           grid-template-columns: 35% 25% 15% 15%;
         }
@@ -516,258 +546,278 @@ main {
           grid-template-columns: 40% 25% 15% 15%;
         }
         @media (max-width: 600px) {
-          display: none;
+          border-bottom: none;
+          grid-template-columns: 1fr;
+          grid-template-rows: repeat(4, 1fr);
+          row-gap: 1rem;
+          justify-items: flex-start;
+          padding: 1.5rem 2rem;
+          box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem,
+            rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem;
+          border-radius: 1rem;
         }
-        & .active {
-          color: black;
-        }
-        & h4 {
-          font-size: 1.55rem;
-          text-transform: uppercase;
-          cursor: pointer;
-          color: darkgray;
-        }
-      }
-      & .container-users {
-        display: flex;
-        flex-direction: column;
-        margin: 2rem 0rem;
-        & .user {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          margin: 2rem 0rem;
-          border-bottom: 0.2rem solid darkgray;
-          padding-bottom: 1.5rem;
-          justify-items: center;
-          align-items: center;
-          @media (max-width: 800px) {
-            grid-template-columns: 35% 25% 15% 15%;
-          }
-          @media (max-width: 700px) {
-            grid-template-columns: 40% 25% 15% 15%;
-          }
-          @media (max-width: 650px) {
-            grid-template-columns: 40% 25% 15% 15%;
-          }
-          @media (max-width: 600px) {
-            border-bottom: none;
-            grid-template-columns: 1fr;
-            grid-template-rows: repeat(4, 1fr);
-            row-gap: 1rem;
-            justify-items: flex-start;
-            padding: 1.5rem 2rem;
-            box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem,
-              rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem;
-            border-radius: 1rem;
-          }
-          & .user-role {
-            display: flex;
-            align-items: center;
-            & h4 {
-              font-size: 1.4rem;
-              text-transform: capitalize;
-            }
-            & .react-icon {
-              font-size: 2.5rem;
-              width: 5rem;
-              background-color: rgb(142, 0, 207);
-              border-radius: 2rem;
-              color: white;
-              margin-right: 1rem;
-            }
-          }
-          & .user-name {
-            justify-self: flex-start;
-            display: flex;
-            align-items: center;
-            & .content {
-              & h3 {
-                font-size: 2rem;
-              }
-              & h4 {
-                font-size: 1.1rem;
-                color: darkgray;
-              }
-            }
-            & .icon {
-              margin-right: 1rem;
-              & .react-icon {
-                font-size: 4rem;
-              }
-            }
-          }
-          & .user-actions {
-            justify-self: flex-end;
-            @media (max-width: 600px) {
-              justify-self: inherit;
-            }
-            & .react-icon {
-              margin: 0 0.5rem;
-              font-size: 1.55rem;
-              cursor: pointer;
-              color: darkgray;
-              transition: 0.2s all;
-            }
-            & .react-icon.gear:hover {
-              color: rgb(3, 137, 182);
-            }
-            & .react-icon.trash:hover {
-              color: red;
-            }
-          }
-          & .user-status.active {
-            background-color: lightblue;
-          }
-          & .user-status.inactive {
-            background-color: lightcoral;
-          }
-          & .user-status {
-            @include toggler;
-          }
-        }
-      }
-    }
-    & .user-modal {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: rgba(black, 0.5);
-      z-index: 99;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem,
-        rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem;
-      opacity: 0;
-      visibility: hidden;
-      transition: 0.1s all ease-in-out;
-      & .modal-container {
-        background-color: white;
-        padding: 5rem 6rem;
-        position: relative;
-        @media (max-width: 600px) {
-          width: 80%;
-        }
-        @media (max-width: 500px) {
-          padding: 4rem;
-        }
-
-        & form {
+        & .user-role {
           display: flex;
-          flex-direction: column;
-          @media (max-width: 600px) {
-            & .react-icon {
-              display: none;
-            }
-            & .form-container:nth-child(1) {
-              flex-direction: column;
-              & .form-control {
-                margin: 2rem 0rem;
-                width: 100%;
-                & input {
-                  width: 100%;
-                }
-              }
-            }
+          align-items: center;
+          & h4 {
+            font-size: 1.4rem;
+            text-transform: capitalize;
           }
-          & .form-container {
-            display: flex;
-            align-items: center;
-            margin: 2rem 0rem;
-            & .react-icon {
-              font-size: 2.2rem;
-              margin-right: 2rem;
-            }
-            & .form-control {
-              position: relative;
-              margin: 0rem 1rem;
-              & label {
-                position: absolute;
-                top: 0;
-                left: 0;
-                color: blue;
-                visibility: visible;
-                opacity: 1;
-                transform: translateY(-1.8rem);
-                transition: 0.2s all;
-                font-size: 1.25rem;
-              }
-              & input {
-                border: none;
-                outline: none;
-                padding: 0.25rem 0rem;
-                border-bottom: 0.2rem darkgray solid;
-                transition: 0.2s all;
-                &:placeholder-shown + label {
-                  opacity: 0;
-                  visibility: hidden;
-                  transform: translateY(1rem);
-                }
-                &:valid {
-                  border-bottom: 0.2rem rgb(0, 201, 0) solid;
-                }
-                &:invalid {
-                  border-bottom: 0.2rem rgb(204, 0, 0) solid;
-                }
-              }
-              & select {
-                border: none;
-                outline: none;
-                padding: 0.25rem 2rem 0.25rem 0rem;
-                border-bottom: 0.2rem darkgray solid;
-                cursor: pointer;
-              }
-            }
-          }
-          & .modal-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            & .btn {
-              @include btn(1.5rem 4rem, 3rem 0rem 0rem 0rem);
-            }
-          }
-          & div:nth-child(2) {
-            & .form-control {
-              width: 85%;
-              & input {
-                width: 100%;
-              }
-            }
-          }
-        }
-        & .modal-close {
-          position: absolute;
-          top: 2rem;
-          right: 2rem;
           & .react-icon {
             font-size: 2.5rem;
-            cursor: pointer;
-            transition: 0.2s all;
-            &:hover {
-              color: red;
+            width: 5rem;
+            background-color: rgb(142, 0, 207);
+            border-radius: 2rem;
+            color: white;
+            margin-right: 1rem;
+          }
+        }
+        & .user-name {
+          justify-self: flex-start;
+          display: flex;
+          align-items: center;
+          & .content {
+            & h3 {
+              font-size: 2rem;
+            }
+            & h4 {
+              font-size: 1.1rem;
+              color: darkgray;
+            }
+          }
+          & .icon {
+            margin-right: 1rem;
+            & .react-icon {
+              font-size: 4rem;
             }
           }
         }
-        & h2 {
-          font-size: 2.5rem;
-          margin-bottom: 3rem;
+        & .user-actions {
+          justify-self: flex-end;
+          @media (max-width: 600px) {
+            justify-self: inherit;
+          }
+          & .react-icon {
+            margin: 0 0.5rem;
+            font-size: 1.55rem;
+            cursor: pointer;
+            color: darkgray;
+            transition: 0.2s all;
+          }
+          & .react-icon.gear:hover {
+            color: rgb(3, 137, 182);
+          }
+          & .react-icon.trash:hover {
+            color: red;
+          }
+        }
+        & .user-status.active {
+          background-color: lightblue;
+        }
+        & .user-status.inactive {
+          background-color: lightcoral;
+        }
+        & .user-status {
+          @include toggler;
         }
       }
     }
-    & .user-modal.active {
-      opacity: 1;
-      visibility: visible;
+    & .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @media (max-width: 500px) {
+        flex-direction: column;
+      }
+      & .data-per-page {
+        display: flex;
+        align-items: center;
+        & label {
+          margin-right: 0.5rem;
+          font-weight: bold;
+          color: darkgray;
+          font-size: 1.4rem;
+        }
+        & select {
+          border: none;
+          background-color: transparent;
+          outline: none;
+          cursor: pointer;
+          font-weight: bold;
+          padding: 0.5rem;
+        }
+      }
+      & .controls {
+        display: flex;
+        align-items: center;
+        & .btn {
+          margin: 0 1rem;
+          cursor: pointer;
+          border: none;
+          background-color: transparent;
+          outline: none;
+          font-weight: bold;
+          color: darkgray;
+        }
+        & .pages {
+          & .btn-page {
+            cursor: pointer;
+            margin: 0 0.2rem;
+            color: black;
+            font-weight: bold;
+            padding: 0.7rem 1rem;
+            border: none;
+            outline: none;
+            transition: 0.2s all;
+          }
+          & .btn-page.active {
+            background-color: darkgray;
+            box-shadow: 0.1rem 0.1rem 1rem darkgray;
+          }
+        }
+      }
     }
   }
-  & .user-p.inactive.hidden {
-    visibility: hidden;
+  & .user-modal {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(black, 0.5);
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem,
+      rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem;
     opacity: 0;
-  }
-  & .user-btn.inactive {
     visibility: hidden;
-    opacity: 0;
+    transition: 0.1s all ease-in-out;
+    & .modal-container {
+      background-color: white;
+      padding: 5rem 6rem;
+      position: relative;
+      @media (max-width: 600px) {
+        width: 80%;
+      }
+      @media (max-width: 500px) {
+        padding: 4rem;
+      }
+
+      & form {
+        display: flex;
+        flex-direction: column;
+        @media (max-width: 600px) {
+          & .react-icon {
+            display: none;
+          }
+          & .form-container:nth-child(1) {
+            flex-direction: column;
+            & .form-control {
+              margin: 2rem 0rem;
+              width: 100%;
+              & input {
+                width: 100%;
+              }
+            }
+          }
+        }
+        & .form-container {
+          display: flex;
+          align-items: center;
+          margin: 2rem 0rem;
+          & .react-icon {
+            font-size: 2.2rem;
+            margin-right: 2rem;
+          }
+          & .form-control {
+            position: relative;
+            margin: 0rem 1rem;
+            & label {
+              position: absolute;
+              top: 0;
+              left: 0;
+              color: blue;
+              visibility: visible;
+              opacity: 1;
+              transform: translateY(-1.8rem);
+              transition: 0.2s all;
+              font-size: 1.25rem;
+            }
+            & input {
+              border: none;
+              outline: none;
+              padding: 0.25rem 0rem;
+              border-bottom: 0.2rem darkgray solid;
+              transition: 0.2s all;
+              &:placeholder-shown + label {
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(1rem);
+              }
+              &:valid {
+                border-bottom: 0.2rem rgb(0, 201, 0) solid;
+              }
+              &:invalid {
+                border-bottom: 0.2rem rgb(204, 0, 0) solid;
+              }
+            }
+            & select {
+              border: none;
+              outline: none;
+              padding: 0.25rem 2rem 0.25rem 0rem;
+              border-bottom: 0.2rem darkgray solid;
+              cursor: pointer;
+            }
+          }
+        }
+        & .modal-footer {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          & .btn {
+            @include btn(1.5rem 4rem, 3rem 0rem 0rem 0rem);
+          }
+        }
+        & div:nth-child(2) {
+          & .form-control {
+            width: 85%;
+            & input {
+              width: 100%;
+            }
+          }
+        }
+      }
+      & .modal-close {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        & .react-icon {
+          font-size: 2.5rem;
+          cursor: pointer;
+          transition: 0.2s all;
+          &:hover {
+            color: red;
+          }
+        }
+      }
+      & h2 {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+      }
+    }
   }
+  & .user-modal.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.user-p.inactive.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+.user-btn.inactive {
+  visibility: hidden;
+  opacity: 0;
 }

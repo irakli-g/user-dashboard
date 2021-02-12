@@ -10,7 +10,7 @@ const Home: React.FC = () => {
   const { openModal, filterUsers } = useAppContext();
 
   return (
-    <section id="home">
+    <main id="home">
       <UserModal />
       <header>
         <h1 className="header-title">Project Access</h1>
@@ -32,8 +32,7 @@ const Home: React.FC = () => {
         <Header />
         <AllUsers />
       </div>
-      <footer></footer>
-    </section>
+    </main>
   );
 };
 

@@ -12,380 +12,245 @@ html {
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
 
-main {
-  position: relative;
-  overflow-x: hidden; }
-  main .message-modal {
-    position: fixed;
-    z-index: 100;
-    top: 6rem;
-    right: 0;
-    transform: translateX(15rem);
-    border-radius: 3rem;
-    transition: 0.4s all ease-in-out;
-    opacity: 0;
-    visibility: hidden;
+.message-modal {
+  position: fixed;
+  z-index: 100;
+  top: 6rem;
+  right: 0;
+  transform: translateX(15rem);
+  border-radius: 3rem;
+  transition: 0.4s all ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem; }
+  @media (max-width: 350px) {
+    .message-modal {
+      padding: 1rem; } }
+  .message-modal .message-content {
+    color: white;
+    font-size: 1.35rem;
+    font-weight: bold; }
+  .message-modal .react-icon {
+    font-size: 2.5rem;
+    margin-right: 1rem;
+    color: white; }
+
+.message-modal.error {
+  background-color: #d40000;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-2rem); }
+  @media (max-width: 350px) {
+    .message-modal.error {
+      transform: translateX(-1rem); } }
+
+.message-modal.warning {
+  background-color: #ffe700;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-2rem); }
+  @media (max-width: 350px) {
+    .message-modal.warning {
+      transform: translateX(-1rem); } }
+
+.message-modal.success {
+  background-color: #00c900;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-2rem); }
+  @media (max-width: 350px) {
+    .message-modal.success {
+      transform: translateX(-1rem); } }
+
+#user,
+#home {
+  background-color: #f0f0f0; }
+  #user header,
+  #home header {
+    background-color: white;
+    padding: 4rem 0rem;
     display: flex;
     align-items: center;
-    padding: 1rem 2rem; }
-    @media (max-width: 350px) {
-      main .message-modal {
-        padding: 1rem; } }
-    main .message-modal .message-content {
-      color: white;
-      font-size: 1.35rem;
-      font-weight: bold; }
-    main .message-modal .react-icon {
-      font-size: 2.5rem;
-      margin-right: 1rem;
-      color: white; }
-  main .message-modal.error {
-    background-color: #d40000;
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-2rem); }
-    @media (max-width: 350px) {
-      main .message-modal.error {
-        transform: translateX(-1rem); } }
-  main .message-modal.warning {
-    background-color: #ffe700;
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-2rem); }
-    @media (max-width: 350px) {
-      main .message-modal.warning {
-        transform: translateX(-1rem); } }
-  main .message-modal.success {
-    background-color: #00c900;
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-2rem); }
-    @media (max-width: 350px) {
-      main .message-modal.success {
-        transform: translateX(-1rem); } }
-  main #user,
-  main #home {
-    background-color: #f0f0f0; }
-    main #user header,
-    main #home header {
-      background-color: white;
-      padding: 4rem 0rem;
+    justify-content: space-evenly;
+    position: relative;
+    box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
+    #user header h1,
+    #home header h1 {
+      font-size: 3rem; }
+    #user header .header-icon,
+    #home header .header-icon {
+      position: absolute;
+      left: 15%;
+      bottom: -20%;
+      z-index: 2;
+      background-color: #0000c7;
+      border-radius: 50%;
+      width: 6.5rem;
+      height: 6.5rem;
       display: flex;
       align-items: center;
-      justify-content: space-evenly;
-      position: relative;
-      box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
-      main #user header h1,
-      main #home header h1 {
-        font-size: 3rem; }
-      main #user header .header-icon,
-      main #home header .header-icon {
-        position: absolute;
-        left: 15%;
-        bottom: -20%;
-        z-index: 2;
-        background-color: #0000c7;
-        border-radius: 50%;
-        width: 6.5rem;
-        height: 6.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      justify-content: center;
+      cursor: pointer; }
+      #user header .header-icon .react-icon,
+      #home header .header-icon .react-icon {
+        font-size: 3.5rem;
+        color: white;
         cursor: pointer; }
-        main #user header .header-icon .react-icon,
-        main #home header .header-icon .react-icon {
-          font-size: 3.5rem;
-          color: white;
-          cursor: pointer; }
-  main #user header h1 {
-    margin: 0 auto 0 40rem; }
-    @media (max-width: 1300px) {
-      main #user header h1 {
-        margin: 0 auto 0 30rem; } }
-    @media (max-width: 800px) {
-      main #user header h1 {
-        margin: 0 auto 0 20rem; } }
-    @media (max-width: 450px) {
-      main #user header h1 {
-        margin: 0 auto 0 15rem; } }
-    @media (max-width: 350px) {
-      main #user header h1 {
-        margin: 0 auto 0 10rem; } }
-  main #user header .header-icon {
-    background-color: lightgray;
+
+#user header h1 {
+  margin: 0 auto 0 40rem; }
+  @media (max-width: 1300px) {
+    #user header h1 {
+      margin: 0 auto 0 30rem; } }
+  @media (max-width: 800px) {
+    #user header h1 {
+      margin: 0 auto 0 20rem; } }
+  @media (max-width: 450px) {
+    #user header h1 {
+      margin: 0 auto 0 15rem; } }
+  @media (max-width: 350px) {
+    #user header h1 {
+      margin: 0 auto 0 10rem; } }
+#user header .header-icon {
+  background-color: lightgray;
+  cursor: default; }
+  #user header .header-icon .react-icon {
     cursor: default; }
-    main #user header .header-icon .react-icon {
-      cursor: default; }
-  main #user .container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 2rem;
-    padding: 5rem 8rem; }
-    @media (max-width: 1150px) {
-      main #user .container {
-        padding: 4rem 2rem; } }
-    @media (max-width: 1000px) {
-      main #user .container {
-        column-gap: 0.2rem; } }
+#user .container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 2rem;
+  padding: 5rem 8rem; }
+  @media (max-width: 1150px) {
+    #user .container {
+      padding: 4rem 2rem; } }
+  @media (max-width: 1000px) {
+    #user .container {
+      column-gap: 0.2rem; } }
+  @media (max-width: 850px) {
+    #user .container {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, 1fr);
+      row-gap: 2rem;
+      justify-items: center;
+      align-items: center;
+      padding: 4rem 20rem; } }
+  @media (max-width: 750px) {
+    #user .container {
+      padding: 4rem 15rem; } }
+  @media (max-width: 650px) {
+    #user .container {
+      padding: 4rem 10rem; } }
+  @media (max-width: 550px) {
+    #user .container {
+      padding: 4rem 5rem; } }
+  @media (max-width: 450px) {
+    #user .container {
+      padding: 4rem 2rem; } }
+  #user .container .user-showcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
     @media (max-width: 850px) {
-      main #user .container {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(3, 1fr);
-        row-gap: 2rem;
-        justify-items: center;
-        align-items: center;
-        padding: 4rem 20rem; } }
-    @media (max-width: 750px) {
-      main #user .container {
-        padding: 4rem 15rem; } }
-    @media (max-width: 650px) {
-      main #user .container {
-        padding: 4rem 10rem; } }
-    @media (max-width: 550px) {
-      main #user .container {
-        padding: 4rem 5rem; } }
-    @media (max-width: 450px) {
-      main #user .container {
-        padding: 4rem 2rem; } }
-    main #user .container .user-showcase {
+      #user .container .user-showcase {
+        width: 100%; } }
+    #user .container .user-showcase .showcase {
       display: flex;
       flex-direction: column;
       align-items: center; }
-      @media (max-width: 850px) {
-        main #user .container .user-showcase {
-          width: 100%; } }
-      main #user .container .user-showcase .showcase {
-        display: flex;
-        flex-direction: column;
-        align-items: center; }
-        main #user .container .user-showcase .showcase p {
-          font-size: 1.8rem;
-          margin: 1rem 0rem 2rem 0rem;
-          text-transform: uppercase;
-          color: darkgray; }
-        main #user .container .user-showcase .showcase .user-photo {
-          position: relative; }
-          main #user .container .user-showcase .showcase .user-photo .react-icon.key {
-            position: absolute;
-            z-index: 2;
-            font-size: 3rem;
-            background-color: #8e00cf;
-            color: white;
-            border-radius: 2rem;
-            width: 5rem;
-            bottom: 3rem;
-            right: 1rem; }
-          main #user .container .user-showcase .showcase .user-photo .react-icon.user {
-            font-size: 20rem; }
-      main #user .container .user-showcase .short-info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%; }
-        main #user .container .user-showcase .short-info h3 {
-          color: black;
-          text-transform: uppercase;
-          font-size: 2.5rem;
-          overflow-x: auto;
-          width: 30rem;
-          text-align: center; }
-        main #user .container .user-showcase .short-info h4 {
-          margin: 1rem 0rem;
-          color: darkgray;
-          font-size: 1.25rem;
-          overflow-x: auto; }
-      main #user .container .user-showcase .user-btn {
-        background-color: darkblue;
-        color: white;
-        font-weight: bold;
-        border-radius: 3rem;
-        padding: 1.5rem 3rem;
-        margin: 2rem 0rem 0rem 0rem;
-        cursor: pointer;
-        border: none;
-        outline: none;
-        transition: 0.2s all ease-in-out;
-        box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
-        background-color: #4e91e9; }
-        main #user .container .user-showcase .user-btn:hover {
-          box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
-        main #user .container .user-showcase .user-btn:active {
-          transform: scale(0.97); }
-    main #user .container .user-details {
-      display: flex;
-      flex-direction: column; }
-      @media (max-width: 850px) {
-        main #user .container .user-details {
-          width: 100%; } }
-      main #user .container .user-details h2 {
-        font-size: 3rem;
-        margin-bottom: 2rem; }
-      main #user .container .user-details .user-status-container {
-        display: flex;
-        align-items: center;
-        margin: 1rem 0rem 3rem 0rem; }
-        main #user .container .user-details .user-status-container p {
-          margin-left: 1rem;
-          font-size: 1.6rem; }
-          main #user .container .user-details .user-status-container p span {
-            color: black;
-            transition: 0.2s all;
-            font-weight: bold; }
-        main #user .container .user-details .user-status-container .user-status.active {
-          background-color: lightblue; }
-        main #user .container .user-details .user-status-container .user-status.inactive {
-          background-color: lightcoral; }
-        main #user .container .user-details .user-status-container .user-status {
-          width: 5rem;
-          padding: 1.2rem;
-          box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
-          border-radius: 3rem;
-          cursor: pointer;
-          position: relative; }
-          main #user .container .user-details .user-status-container .user-status .btn.active {
-            background-color: #0389b6;
-            transform: translateX(2.5rem); }
-          main #user .container .user-details .user-status-container .user-status .btn.inactive {
-            background-color: #cc0000;
-            transform: translateX(0rem); }
-          main #user .container .user-details .user-status-container .user-status .btn {
-            position: absolute;
-            padding: 1.2rem;
-            top: 0;
-            left: 0;
-            transition: 0.2s all;
-            border-radius: 50%;
-            border: none;
-            outline: none;
-            cursor: pointer; }
-        main #user .container .user-details .user-status-container .back-btn {
-          background-color: darkblue;
+      #user .container .user-showcase .showcase p {
+        font-size: 1.8rem;
+        margin: 1rem 0rem 2rem 0rem;
+        text-transform: uppercase;
+        color: darkgray; }
+      #user .container .user-showcase .showcase .user-photo {
+        position: relative; }
+        #user .container .user-showcase .showcase .user-photo .react-icon.key {
+          position: absolute;
+          z-index: 2;
+          font-size: 3rem;
+          background-color: #8e00cf;
           color: white;
-          font-weight: bold;
-          border-radius: 3rem;
-          padding: 0.4rem 1rem;
-          margin: 0rem 0rem 0rem 1rem;
-          cursor: pointer;
-          border: none;
-          outline: none;
-          transition: 0.2s all ease-in-out;
-          box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem; }
-          main #user .container .user-details .user-status-container .back-btn:hover {
-            box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
-          main #user .container .user-details .user-status-container .back-btn:active {
-            transform: scale(0.97); }
-      main #user .container .user-details form {
-        display: flex;
-        flex-direction: column;
-        width: 50%;
-        margin: 0 auto 0 5rem; }
-        @media (max-width: 1300px) {
-          main #user .container .user-details form {
-            width: 60%; } }
-        @media (max-width: 1100px) {
-          main #user .container .user-details form {
-            width: 65%; } }
-        main #user .container .user-details form .form-control {
-          display: flex;
-          flex-direction: column;
-          margin: 1rem 0rem; }
-          main #user .container .user-details form .form-control select {
-            border: none;
-            outline: none;
-            padding: 0.25rem 2rem 0.25rem 0rem;
-            border-bottom: 0.2rem darkgray solid;
-            cursor: pointer;
-            background-color: transparent; }
-          main #user .container .user-details form .form-control label {
-            color: blue;
-            margin-bottom: 0.5rem; }
-          main #user .container .user-details form .form-control input {
-            border: none;
-            outline: none;
-            padding: 0.25rem 0rem;
-            border-bottom: 0.2rem darkgray solid;
-            transition: 0.2s all;
-            background-color: transparent; }
-      main #user .container .user-details .user-btn {
-        background-color: darkblue;
-        color: white;
-        font-weight: bold;
-        border-radius: 3rem;
-        padding: 1.5rem 3rem;
-        margin: 8rem auto 0rem 5rem;
-        cursor: pointer;
-        border: none;
-        outline: none;
-        transition: 0.2s all ease-in-out;
-        box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
-        width: 50%; }
-        main #user .container .user-details .user-btn:hover {
-          box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
-        main #user .container .user-details .user-btn:active {
-          transform: scale(0.97); }
-        @media (max-width: 1000px) {
-          main #user .container .user-details .user-btn {
-            width: 60%; } }
-        @media (max-width: 850px) {
-          main #user .container .user-details .user-btn {
-            background-color: darkblue;
-            color: white;
-            font-weight: bold;
-            border-radius: 3rem;
-            padding: 1.5rem 3rem;
-            margin: 8rem auto 0rem auto;
-            cursor: pointer;
-            border: none;
-            outline: none;
-            transition: 0.2s all ease-in-out;
-            box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
-            width: 50%; }
-            main #user .container .user-details .user-btn:hover {
-              box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
-            main #user .container .user-details .user-btn:active {
-              transform: scale(0.97); } }
-        @media (max-width: 350px) {
-          main #user .container .user-details .user-btn {
-            width: 60%; } }
+          border-radius: 2rem;
+          width: 5rem;
+          bottom: 3rem;
+          right: 1rem; }
+        #user .container .user-showcase .showcase .user-photo .react-icon.user {
+          font-size: 20rem; }
+    #user .container .user-showcase .short-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%; }
+      #user .container .user-showcase .short-info h3 {
+        color: black;
+        text-transform: uppercase;
+        font-size: 2.5rem;
+        overflow-x: auto;
+        width: 30rem;
+        text-align: center; }
+      #user .container .user-showcase .short-info h4 {
+        margin: 1rem 0rem;
+        color: darkgray;
+        font-size: 1.25rem;
+        overflow-x: auto; }
+    #user .container .user-showcase .user-btn {
+      background-color: darkblue;
+      color: white;
+      font-weight: bold;
+      border-radius: 3rem;
+      padding: 1.5rem 3rem;
+      margin: 2rem 0rem 0rem 0rem;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: 0.2s all ease-in-out;
+      box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
+      background-color: #4e91e9; }
+      #user .container .user-showcase .user-btn:hover {
+        box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
+      #user .container .user-showcase .user-btn:active {
+        transform: scale(0.97); }
+  #user .container .user-details {
+    display: flex;
+    flex-direction: column; }
     @media (max-width: 850px) {
-      main #user .container .user-permissions {
+      #user .container .user-details {
         width: 100%; } }
-    main #user .container .user-permissions > div {
+    #user .container .user-details h2 {
+      font-size: 3rem;
+      margin-bottom: 2rem; }
+    #user .container .user-details .user-status-container {
       display: flex;
       align-items: center;
-      justify-content: space-between; }
-      main #user .container .user-permissions > div h2 {
-        font-size: 3rem; }
-      main #user .container .user-permissions > div p {
-        font-size: 1.5rem;
-        font-weight: bold;
-        text-transform: capitalize; }
-    main #user .container .user-permissions .super-admin {
-      margin: 2rem 0rem;
-      border-bottom: 0.2rem darkgray solid;
-      padding-bottom: 2rem; }
-      main #user .container .user-permissions .super-admin h3 {
+      margin: 1rem 0rem 3rem 0rem; }
+      #user .container .user-details .user-status-container p {
+        margin-left: 1rem;
         font-size: 1.6rem; }
-      main #user .container .user-permissions .super-admin .user-status-btn.active {
+        #user .container .user-details .user-status-container p span {
+          color: black;
+          transition: 0.2s all;
+          font-weight: bold; }
+      #user .container .user-details .user-status-container .user-status.active {
         background-color: lightblue; }
-      main #user .container .user-permissions .super-admin .user-status-btn.inactive {
+      #user .container .user-details .user-status-container .user-status.inactive {
         background-color: lightcoral; }
-      main #user .container .user-permissions .super-admin .user-status-btn {
+      #user .container .user-details .user-status-container .user-status {
         width: 5rem;
         padding: 1.2rem;
         box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
         border-radius: 3rem;
         cursor: pointer;
-        position: relative;
-        outline: none;
-        border: none; }
-        main #user .container .user-permissions .super-admin .user-status-btn .btn.active {
+        position: relative; }
+        #user .container .user-details .user-status-container .user-status .btn.active {
           background-color: #0389b6;
           transform: translateX(2.5rem); }
-        main #user .container .user-permissions .super-admin .user-status-btn .btn.inactive {
+        #user .container .user-details .user-status-container .user-status .btn.inactive {
           background-color: #cc0000;
           transform: translateX(0rem); }
-        main #user .container .user-permissions .super-admin .user-status-btn .btn {
+        #user .container .user-details .user-status-container .user-status .btn {
           position: absolute;
           padding: 1.2rem;
           top: 0;
@@ -395,25 +260,212 @@ main {
           border: none;
           outline: none;
           cursor: pointer; }
-    main #user .container .user-permissions .permissions-container {
+      #user .container .user-details .user-status-container .back-btn {
+        background-color: darkblue;
+        color: white;
+        font-weight: bold;
+        border-radius: 3rem;
+        padding: 0.4rem 1rem;
+        margin: 0rem 0rem 0rem 1rem;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        transition: 0.2s all ease-in-out;
+        box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem; }
+        #user .container .user-details .user-status-container .back-btn:hover {
+          box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
+        #user .container .user-details .user-status-container .back-btn:active {
+          transform: scale(0.97); }
+    #user .container .user-details form {
       display: flex;
       flex-direction: column;
-      align-items: flex-start; }
-      main #user .container .user-permissions .permissions-container ul {
-        list-style: none;
-        margin: 1rem 0rem;
-        width: 100%;
-        border-bottom: 0.2rem darkgray solid;
-        padding-bottom: 2rem; }
-        main #user .container .user-permissions .permissions-container ul .ul-header {
+      width: 50%;
+      margin: 0 auto 0 5rem; }
+      @media (max-width: 1300px) {
+        #user .container .user-details form {
+          width: 60%; } }
+      @media (max-width: 1100px) {
+        #user .container .user-details form {
+          width: 65%; } }
+      #user .container .user-details form .form-control {
+        display: flex;
+        flex-direction: column;
+        margin: 1rem 0rem; }
+        #user .container .user-details form .form-control select {
+          border: none;
+          outline: none;
+          padding: 0.25rem 2rem 0.25rem 0rem;
+          border-bottom: 0.2rem darkgray solid;
+          cursor: pointer;
+          background-color: transparent; }
+        #user .container .user-details form .form-control label {
+          color: blue;
+          margin-bottom: 0.5rem; }
+        #user .container .user-details form .form-control input {
+          border: none;
+          outline: none;
+          padding: 0.25rem 0rem;
+          border-bottom: 0.2rem darkgray solid;
+          transition: 0.2s all;
+          background-color: transparent; }
+    #user .container .user-details .user-btn {
+      background-color: darkblue;
+      color: white;
+      font-weight: bold;
+      border-radius: 3rem;
+      padding: 1.5rem 3rem;
+      margin: 8rem auto 0rem 5rem;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: 0.2s all ease-in-out;
+      box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
+      width: 50%; }
+      #user .container .user-details .user-btn:hover {
+        box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
+      #user .container .user-details .user-btn:active {
+        transform: scale(0.97); }
+      @media (max-width: 1000px) {
+        #user .container .user-details .user-btn {
+          width: 60%; } }
+      @media (max-width: 850px) {
+        #user .container .user-details .user-btn {
+          background-color: darkblue;
+          color: white;
+          font-weight: bold;
+          border-radius: 3rem;
+          padding: 1.5rem 3rem;
+          margin: 8rem auto 0rem auto;
+          cursor: pointer;
+          border: none;
+          outline: none;
+          transition: 0.2s all ease-in-out;
+          box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
+          width: 50%; }
+          #user .container .user-details .user-btn:hover {
+            box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
+          #user .container .user-details .user-btn:active {
+            transform: scale(0.97); } }
+      @media (max-width: 350px) {
+        #user .container .user-details .user-btn {
+          width: 60%; } }
+  @media (max-width: 850px) {
+    #user .container .user-permissions {
+      width: 100%; } }
+  #user .container .user-permissions > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+    #user .container .user-permissions > div h2 {
+      font-size: 3rem; }
+    #user .container .user-permissions > div p {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-transform: capitalize; }
+  #user .container .user-permissions .super-admin {
+    margin: 2rem 0rem;
+    border-bottom: 0.2rem darkgray solid;
+    padding-bottom: 2rem; }
+    #user .container .user-permissions .super-admin h3 {
+      font-size: 1.6rem; }
+    #user .container .user-permissions .super-admin .user-status-btn.active {
+      background-color: lightblue; }
+    #user .container .user-permissions .super-admin .user-status-btn.inactive {
+      background-color: lightcoral; }
+    #user .container .user-permissions .super-admin .user-status-btn {
+      width: 5rem;
+      padding: 1.2rem;
+      box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
+      border-radius: 3rem;
+      cursor: pointer;
+      position: relative;
+      outline: none;
+      border: none; }
+      #user .container .user-permissions .super-admin .user-status-btn .btn.active {
+        background-color: #0389b6;
+        transform: translateX(2.5rem); }
+      #user .container .user-permissions .super-admin .user-status-btn .btn.inactive {
+        background-color: #cc0000;
+        transform: translateX(0rem); }
+      #user .container .user-permissions .super-admin .user-status-btn .btn {
+        position: absolute;
+        padding: 1.2rem;
+        top: 0;
+        left: 0;
+        transition: 0.2s all;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+        cursor: pointer; }
+  #user .container .user-permissions .permissions-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; }
+    #user .container .user-permissions .permissions-container ul {
+      list-style: none;
+      margin: 1rem 0rem;
+      width: 100%;
+      border-bottom: 0.2rem darkgray solid;
+      padding-bottom: 2rem; }
+      #user .container .user-permissions .permissions-container ul .ul-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; }
+        #user .container .user-permissions .permissions-container ul .ul-header .user-status-btn.active {
+          background-color: lightblue; }
+        #user .container .user-permissions .permissions-container ul .ul-header .user-status-btn.inactive {
+          background-color: lightcoral; }
+        #user .container .user-permissions .permissions-container ul .ul-header .user-status-btn {
+          width: 5rem;
+          padding: 1.2rem;
+          box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
+          border-radius: 3rem;
+          cursor: pointer;
+          position: relative;
+          outline: none;
+          border: none; }
+          #user .container .user-permissions .permissions-container ul .ul-header .user-status-btn .btn.active {
+            background-color: #0389b6;
+            transform: translateX(2.5rem); }
+          #user .container .user-permissions .permissions-container ul .ul-header .user-status-btn .btn.inactive {
+            background-color: #cc0000;
+            transform: translateX(0rem); }
+          #user .container .user-permissions .permissions-container ul .ul-header .user-status-btn .btn {
+            position: absolute;
+            padding: 1.2rem;
+            top: 0;
+            left: 0;
+            transition: 0.2s all;
+            border-radius: 50%;
+            border: none;
+            outline: none;
+            cursor: pointer; }
+        #user .container .user-permissions .permissions-container ul .ul-header h4 {
+          margin-bottom: 1rem;
           display: flex;
           align-items: center;
-          justify-content: space-between; }
-          main #user .container .user-permissions .permissions-container ul .ul-header .user-status-btn.active {
-            background-color: lightblue; }
-          main #user .container .user-permissions .permissions-container ul .ul-header .user-status-btn.inactive {
-            background-color: lightcoral; }
-          main #user .container .user-permissions .permissions-container ul .ul-header .user-status-btn {
+          cursor: pointer; }
+          #user .container .user-permissions .permissions-container ul .ul-header h4 span {
+            font-size: 1.6rem; }
+          #user .container .user-permissions .permissions-container ul .ul-header h4 .react-icon {
+            font-size: 2.2rem;
+            margin-right: 0.5rem; }
+      #user .container .user-permissions .permissions-container ul .li-container.active {
+        display: block; }
+      #user .container .user-permissions .permissions-container ul .li-container {
+        display: none; }
+        #user .container .user-permissions .permissions-container ul .li-container li {
+          font-size: 1.25rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin: 0.7rem 0rem;
+          padding-left: 3rem; }
+          #user .container .user-permissions .permissions-container ul .li-container li .user-status-btn.active {
+            background-color: #add8e6; }
+          #user .container .user-permissions .permissions-container ul .li-container li .user-status-btn.inactive {
+            background-color: #f08080; }
+          #user .container .user-permissions .permissions-container ul .li-container li .user-status-btn {
             width: 5rem;
             padding: 1.2rem;
             box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
@@ -422,13 +474,13 @@ main {
             position: relative;
             outline: none;
             border: none; }
-            main #user .container .user-permissions .permissions-container ul .ul-header .user-status-btn .btn.active {
+            #user .container .user-permissions .permissions-container ul .li-container li .user-status-btn .btn.active {
               background-color: #0389b6;
               transform: translateX(2.5rem); }
-            main #user .container .user-permissions .permissions-container ul .ul-header .user-status-btn .btn.inactive {
+            #user .container .user-permissions .permissions-container ul .li-container li .user-status-btn .btn.inactive {
               background-color: #cc0000;
               transform: translateX(0rem); }
-            main #user .container .user-permissions .permissions-container ul .ul-header .user-status-btn .btn {
+            #user .container .user-permissions .permissions-container ul .li-container li .user-status-btn .btn {
               position: absolute;
               padding: 1.2rem;
               top: 0;
@@ -438,368 +490,365 @@ main {
               border: none;
               outline: none;
               cursor: pointer; }
-          main #user .container .user-permissions .permissions-container ul .ul-header h4 {
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            cursor: pointer; }
-            main #user .container .user-permissions .permissions-container ul .ul-header h4 span {
-              font-size: 1.6rem; }
-            main #user .container .user-permissions .permissions-container ul .ul-header h4 .react-icon {
-              font-size: 2.2rem;
-              margin-right: 0.5rem; }
-        main #user .container .user-permissions .permissions-container ul .li-container.active {
-          display: block; }
-        main #user .container .user-permissions .permissions-container ul .li-container {
-          display: none; }
-          main #user .container .user-permissions .permissions-container ul .li-container li {
-            font-size: 1.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 0.7rem 0rem;
-            padding-left: 3rem; }
-            main #user .container .user-permissions .permissions-container ul .li-container li .user-status-btn.active {
-              background-color: #add8e6; }
-            main #user .container .user-permissions .permissions-container ul .li-container li .user-status-btn.inactive {
-              background-color: #f08080; }
-            main #user .container .user-permissions .permissions-container ul .li-container li .user-status-btn {
-              width: 5rem;
-              padding: 1.2rem;
-              box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
-              border-radius: 3rem;
-              cursor: pointer;
-              position: relative;
-              outline: none;
-              border: none; }
-              main #user .container .user-permissions .permissions-container ul .li-container li .user-status-btn .btn.active {
-                background-color: #0389b6;
-                transform: translateX(2.5rem); }
-              main #user .container .user-permissions .permissions-container ul .li-container li .user-status-btn .btn.inactive {
-                background-color: #cc0000;
-                transform: translateX(0rem); }
-              main #user .container .user-permissions .permissions-container ul .li-container li .user-status-btn .btn {
-                position: absolute;
-                padding: 1.2rem;
-                top: 0;
-                left: 0;
-                transition: 0.2s all;
-                border-radius: 50%;
-                border: none;
-                outline: none;
-                cursor: pointer; }
-            main #user .container .user-permissions .permissions-container ul .li-container li p .react-icon {
-              margin-right: 1rem;
-              font-size: 0.7rem; }
-            main #user .container .user-permissions .permissions-container ul .li-container li p span {
-              font-weight: 350; }
-  main #home {
-    position: relative; }
-    @media (max-width: 600px) {
-      main #home header {
-        padding-bottom: 6rem; } }
-    @media (max-width: 400px) {
-      main #home header {
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 4rem; }
-        main #home header h1 {
-          margin-bottom: 2rem; } }
-    main #home header .form-control {
+          #user .container .user-permissions .permissions-container ul .li-container li p .react-icon {
+            margin-right: 1rem;
+            font-size: 0.7rem; }
+          #user .container .user-permissions .permissions-container ul .li-container li p span {
+            font-weight: 350; }
+
+#home {
+  position: relative; }
+  @media (max-width: 600px) {
+    #home header {
+      padding-bottom: 6rem; } }
+  @media (max-width: 400px) {
+    #home header {
       display: flex;
+      flex-direction: column;
+      padding-bottom: 4rem; }
+      #home header h1 {
+        margin-bottom: 2rem; } }
+  #home header .form-control {
+    display: flex;
+    align-items: center;
+    border-bottom: 0.2rem darkgray solid;
+    padding-bottom: 0.2rem; }
+    #home header .form-control .react-icon {
+      font-size: 2rem;
+      margin-bottom: 0.2rem;
+      cursor: pointer;
+      transition: 0.2s all; }
+      #home header .form-control .react-icon:hover {
+        color: #0000c7; }
+    #home header .form-control input {
+      border: none;
+      outline: none;
+      padding: 0.2rem;
+      font-style: italic; }
+  #home .container {
+    width: 100%;
+    overflow-y: auto;
+    background-color: #f0f0f0;
+    padding: 5rem 12rem;
+    overflow-y: auto; }
+    @media (max-width: 1100px) {
+      #home .container {
+        padding: 5rem 6rem; } }
+    @media (max-width: 1000px) {
+      #home .container {
+        padding: 4rem; } }
+    @media (max-width: 800px) {
+      #home .container {
+        padding: 4rem 1rem; } }
+    @media (max-width: 600px) {
+      #home .container {
+        padding: 4rem 10rem; } }
+    @media (max-width: 550px) {
+      #home .container {
+        padding: 4rem 7rem; } }
+    @media (max-width: 450px) {
+      #home .container {
+        padding: 4rem; } }
+    @media (max-width: 350px) {
+      #home .container {
+        padding: 4rem 2rem; } }
+    #home .container .container-header h4:nth-child(1) {
+      justify-self: flex-start; }
+    #home .container .container-header h4:nth-child(4) {
+      justify-self: flex-end; }
+    #home .container .container-header {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       align-items: center;
-      border-bottom: 0.2rem darkgray solid;
-      padding-bottom: 0.2rem; }
-      main #home header .form-control .react-icon {
-        font-size: 2rem;
-        margin-bottom: 0.2rem;
-        cursor: pointer;
-        transition: 0.2s all; }
-        main #home header .form-control .react-icon:hover {
-          color: #0000c7; }
-      main #home header .form-control input {
-        border: none;
-        outline: none;
-        padding: 0.2rem;
-        font-style: italic; }
-    main #home .container {
-      width: 100%;
-      height: 55rem;
-      overflow-y: auto;
-      background-color: #f0f0f0;
-      padding: 6rem 12rem;
-      overflow-y: auto; }
-      @media (max-width: 1100px) {
-        main #home .container {
-          padding: 6rem; } }
-      @media (max-width: 1000px) {
-        main #home .container {
-          padding: 4rem; } }
+      justify-items: center;
+      border-bottom: 0.25rem darkgray solid;
+      padding-bottom: 2rem; }
       @media (max-width: 800px) {
-        main #home .container {
-          padding: 4rem 1rem; } }
+        #home .container .container-header {
+          grid-template-columns: 35% 25% 15% 15%; } }
+      @media (max-width: 700px) {
+        #home .container .container-header {
+          grid-template-columns: 40% 25% 15% 15%; } }
+      @media (max-width: 650px) {
+        #home .container .container-header {
+          grid-template-columns: 40% 25% 15% 15%; } }
       @media (max-width: 600px) {
-        main #home .container {
-          padding: 4rem 10rem; } }
-      @media (max-width: 550px) {
-        main #home .container {
-          padding: 4rem 7rem; } }
-      @media (max-width: 450px) {
-        main #home .container {
-          padding: 4rem; } }
-      @media (max-width: 350px) {
-        main #home .container {
-          padding: 4rem 2rem; } }
-      main #home .container .container-header h4:nth-child(1) {
-        justify-self: flex-start; }
-      main #home .container .container-header h4:nth-child(4) {
-        justify-self: flex-end; }
-      main #home .container .container-header {
+        #home .container .container-header {
+          display: none; } }
+      #home .container .container-header .active {
+        color: black; }
+      #home .container .container-header h4 {
+        font-size: 1.55rem;
+        text-transform: uppercase;
+        cursor: pointer;
+        color: darkgray; }
+    #home .container .container-users {
+      display: flex;
+      flex-direction: column;
+      margin: 2rem 0rem; }
+      #home .container .container-users .user {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        align-items: center;
+        margin: 2rem 0rem;
+        border-bottom: 0.2rem solid darkgray;
+        padding-bottom: 1.5rem;
         justify-items: center;
-        border-bottom: 0.25rem darkgray solid;
-        padding-bottom: 2rem; }
+        align-items: center; }
         @media (max-width: 800px) {
-          main #home .container .container-header {
+          #home .container .container-users .user {
             grid-template-columns: 35% 25% 15% 15%; } }
         @media (max-width: 700px) {
-          main #home .container .container-header {
+          #home .container .container-users .user {
             grid-template-columns: 40% 25% 15% 15%; } }
         @media (max-width: 650px) {
-          main #home .container .container-header {
+          #home .container .container-users .user {
             grid-template-columns: 40% 25% 15% 15%; } }
         @media (max-width: 600px) {
-          main #home .container .container-header {
-            display: none; } }
-        main #home .container .container-header .active {
-          color: black; }
-        main #home .container .container-header h4 {
-          font-size: 1.55rem;
-          text-transform: uppercase;
-          cursor: pointer;
-          color: darkgray; }
-      main #home .container .container-users {
-        display: flex;
-        flex-direction: column;
-        margin: 2rem 0rem; }
-        main #home .container .container-users .user {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          margin: 2rem 0rem;
-          border-bottom: 0.2rem solid darkgray;
-          padding-bottom: 1.5rem;
-          justify-items: center;
+          #home .container .container-users .user {
+            border-bottom: none;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(4, 1fr);
+            row-gap: 1rem;
+            justify-items: flex-start;
+            padding: 1.5rem 2rem;
+            box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem;
+            border-radius: 1rem; } }
+        #home .container .container-users .user .user-role {
+          display: flex;
           align-items: center; }
-          @media (max-width: 800px) {
-            main #home .container .container-users .user {
-              grid-template-columns: 35% 25% 15% 15%; } }
-          @media (max-width: 700px) {
-            main #home .container .container-users .user {
-              grid-template-columns: 40% 25% 15% 15%; } }
-          @media (max-width: 650px) {
-            main #home .container .container-users .user {
-              grid-template-columns: 40% 25% 15% 15%; } }
-          @media (max-width: 600px) {
-            main #home .container .container-users .user {
-              border-bottom: none;
-              grid-template-columns: 1fr;
-              grid-template-rows: repeat(4, 1fr);
-              row-gap: 1rem;
-              justify-items: flex-start;
-              padding: 1.5rem 2rem;
-              box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem;
-              border-radius: 1rem; } }
-          main #home .container .container-users .user .user-role {
-            display: flex;
-            align-items: center; }
-            main #home .container .container-users .user .user-role h4 {
-              font-size: 1.4rem;
-              text-transform: capitalize; }
-            main #home .container .container-users .user .user-role .react-icon {
-              font-size: 2.5rem;
-              width: 5rem;
-              background-color: #8e00cf;
-              border-radius: 2rem;
-              color: white;
-              margin-right: 1rem; }
-          main #home .container .container-users .user .user-name {
-            justify-self: flex-start;
-            display: flex;
-            align-items: center; }
-            main #home .container .container-users .user .user-name .content h3 {
-              font-size: 2rem; }
-            main #home .container .container-users .user .user-name .content h4 {
-              font-size: 1.1rem;
-              color: darkgray; }
-            main #home .container .container-users .user .user-name .icon {
-              margin-right: 1rem; }
-              main #home .container .container-users .user .user-name .icon .react-icon {
-                font-size: 4rem; }
-          main #home .container .container-users .user .user-actions {
-            justify-self: flex-end; }
-            @media (max-width: 600px) {
-              main #home .container .container-users .user .user-actions {
-                justify-self: inherit; } }
-            main #home .container .container-users .user .user-actions .react-icon {
-              margin: 0 0.5rem;
-              font-size: 1.55rem;
-              cursor: pointer;
-              color: darkgray;
-              transition: 0.2s all; }
-            main #home .container .container-users .user .user-actions .react-icon.gear:hover {
-              color: #0389b6; }
-            main #home .container .container-users .user .user-actions .react-icon.trash:hover {
-              color: red; }
-          main #home .container .container-users .user .user-status.active {
-            background-color: lightblue; }
-          main #home .container .container-users .user .user-status.inactive {
-            background-color: lightcoral; }
-          main #home .container .container-users .user .user-status {
+          #home .container .container-users .user .user-role h4 {
+            font-size: 1.4rem;
+            text-transform: capitalize; }
+          #home .container .container-users .user .user-role .react-icon {
+            font-size: 2.5rem;
             width: 5rem;
-            padding: 1.2rem;
-            box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
-            border-radius: 3rem;
+            background-color: #8e00cf;
+            border-radius: 2rem;
+            color: white;
+            margin-right: 1rem; }
+        #home .container .container-users .user .user-name {
+          justify-self: flex-start;
+          display: flex;
+          align-items: center; }
+          #home .container .container-users .user .user-name .content h3 {
+            font-size: 2rem; }
+          #home .container .container-users .user .user-name .content h4 {
+            font-size: 1.1rem;
+            color: darkgray; }
+          #home .container .container-users .user .user-name .icon {
+            margin-right: 1rem; }
+            #home .container .container-users .user .user-name .icon .react-icon {
+              font-size: 4rem; }
+        #home .container .container-users .user .user-actions {
+          justify-self: flex-end; }
+          @media (max-width: 600px) {
+            #home .container .container-users .user .user-actions {
+              justify-self: inherit; } }
+          #home .container .container-users .user .user-actions .react-icon {
+            margin: 0 0.5rem;
+            font-size: 1.55rem;
             cursor: pointer;
-            position: relative; }
-            main #home .container .container-users .user .user-status .btn.active {
-              background-color: #0389b6;
-              transform: translateX(2.5rem); }
-            main #home .container .container-users .user .user-status .btn.inactive {
-              background-color: #cc0000;
-              transform: translateX(0rem); }
-            main #home .container .container-users .user .user-status .btn {
+            color: darkgray;
+            transition: 0.2s all; }
+          #home .container .container-users .user .user-actions .react-icon.gear:hover {
+            color: #0389b6; }
+          #home .container .container-users .user .user-actions .react-icon.trash:hover {
+            color: red; }
+        #home .container .container-users .user .user-status.active {
+          background-color: lightblue; }
+        #home .container .container-users .user .user-status.inactive {
+          background-color: lightcoral; }
+        #home .container .container-users .user .user-status {
+          width: 5rem;
+          padding: 1.2rem;
+          box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
+          border-radius: 3rem;
+          cursor: pointer;
+          position: relative; }
+          #home .container .container-users .user .user-status .btn.active {
+            background-color: #0389b6;
+            transform: translateX(2.5rem); }
+          #home .container .container-users .user .user-status .btn.inactive {
+            background-color: #cc0000;
+            transform: translateX(0rem); }
+          #home .container .container-users .user .user-status .btn {
+            position: absolute;
+            padding: 1.2rem;
+            top: 0;
+            left: 0;
+            transition: 0.2s all;
+            border-radius: 50%;
+            border: none;
+            outline: none;
+            cursor: pointer; }
+    #home .container .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; }
+      @media (max-width: 500px) {
+        #home .container .pagination {
+          flex-direction: column; } }
+      #home .container .pagination .data-per-page {
+        display: flex;
+        align-items: center; }
+        #home .container .pagination .data-per-page label {
+          margin-right: 0.5rem;
+          font-weight: bold;
+          color: darkgray;
+          font-size: 1.4rem; }
+        #home .container .pagination .data-per-page select {
+          border: none;
+          background-color: transparent;
+          outline: none;
+          cursor: pointer;
+          font-weight: bold;
+          padding: 0.5rem; }
+      #home .container .pagination .controls {
+        display: flex;
+        align-items: center; }
+        #home .container .pagination .controls .btn {
+          margin: 0 1rem;
+          cursor: pointer;
+          border: none;
+          background-color: transparent;
+          outline: none;
+          font-weight: bold;
+          color: darkgray; }
+        #home .container .pagination .controls .pages .btn-page {
+          cursor: pointer;
+          margin: 0 0.2rem;
+          color: black;
+          font-weight: bold;
+          padding: 0.7rem 1rem;
+          border: none;
+          outline: none;
+          transition: 0.2s all; }
+        #home .container .pagination .controls .pages .btn-page.active {
+          background-color: darkgray;
+          box-shadow: 0.1rem 0.1rem 1rem darkgray; }
+  #home .user-modal {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.1s all ease-in-out; }
+    #home .user-modal .modal-container {
+      background-color: white;
+      padding: 5rem 6rem;
+      position: relative; }
+      @media (max-width: 600px) {
+        #home .user-modal .modal-container {
+          width: 80%; } }
+      @media (max-width: 500px) {
+        #home .user-modal .modal-container {
+          padding: 4rem; } }
+      #home .user-modal .modal-container form {
+        display: flex;
+        flex-direction: column; }
+        @media (max-width: 600px) {
+          #home .user-modal .modal-container form .react-icon {
+            display: none; }
+          #home .user-modal .modal-container form .form-container:nth-child(1) {
+            flex-direction: column; }
+            #home .user-modal .modal-container form .form-container:nth-child(1) .form-control {
+              margin: 2rem 0rem;
+              width: 100%; }
+              #home .user-modal .modal-container form .form-container:nth-child(1) .form-control input {
+                width: 100%; } }
+        #home .user-modal .modal-container form .form-container {
+          display: flex;
+          align-items: center;
+          margin: 2rem 0rem; }
+          #home .user-modal .modal-container form .form-container .react-icon {
+            font-size: 2.2rem;
+            margin-right: 2rem; }
+          #home .user-modal .modal-container form .form-container .form-control {
+            position: relative;
+            margin: 0rem 1rem; }
+            #home .user-modal .modal-container form .form-container .form-control label {
               position: absolute;
-              padding: 1.2rem;
               top: 0;
               left: 0;
+              color: blue;
+              visibility: visible;
+              opacity: 1;
+              transform: translateY(-1.8rem);
               transition: 0.2s all;
-              border-radius: 50%;
+              font-size: 1.25rem; }
+            #home .user-modal .modal-container form .form-container .form-control input {
               border: none;
               outline: none;
+              padding: 0.25rem 0rem;
+              border-bottom: 0.2rem darkgray solid;
+              transition: 0.2s all; }
+              #home .user-modal .modal-container form .form-container .form-control input:placeholder-shown + label {
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(1rem); }
+              #home .user-modal .modal-container form .form-container .form-control input:valid {
+                border-bottom: 0.2rem #00c900 solid; }
+              #home .user-modal .modal-container form .form-container .form-control input:invalid {
+                border-bottom: 0.2rem #cc0000 solid; }
+            #home .user-modal .modal-container form .form-container .form-control select {
+              border: none;
+              outline: none;
+              padding: 0.25rem 2rem 0.25rem 0rem;
+              border-bottom: 0.2rem darkgray solid;
               cursor: pointer; }
-    main #home .user-modal {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 99;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem;
-      opacity: 0;
-      visibility: hidden;
-      transition: 0.1s all ease-in-out; }
-      main #home .user-modal .modal-container {
-        background-color: white;
-        padding: 5rem 6rem;
-        position: relative; }
-        @media (max-width: 600px) {
-          main #home .user-modal .modal-container {
-            width: 80%; } }
-        @media (max-width: 500px) {
-          main #home .user-modal .modal-container {
-            padding: 4rem; } }
-        main #home .user-modal .modal-container form {
+        #home .user-modal .modal-container form .modal-footer {
           display: flex;
-          flex-direction: column; }
-          @media (max-width: 600px) {
-            main #home .user-modal .modal-container form .react-icon {
-              display: none; }
-            main #home .user-modal .modal-container form .form-container:nth-child(1) {
-              flex-direction: column; }
-              main #home .user-modal .modal-container form .form-container:nth-child(1) .form-control {
-                margin: 2rem 0rem;
-                width: 100%; }
-                main #home .user-modal .modal-container form .form-container:nth-child(1) .form-control input {
-                  width: 100%; } }
-          main #home .user-modal .modal-container form .form-container {
-            display: flex;
-            align-items: center;
-            margin: 2rem 0rem; }
-            main #home .user-modal .modal-container form .form-container .react-icon {
-              font-size: 2.2rem;
-              margin-right: 2rem; }
-            main #home .user-modal .modal-container form .form-container .form-control {
-              position: relative;
-              margin: 0rem 1rem; }
-              main #home .user-modal .modal-container form .form-container .form-control label {
-                position: absolute;
-                top: 0;
-                left: 0;
-                color: blue;
-                visibility: visible;
-                opacity: 1;
-                transform: translateY(-1.8rem);
-                transition: 0.2s all;
-                font-size: 1.25rem; }
-              main #home .user-modal .modal-container form .form-container .form-control input {
-                border: none;
-                outline: none;
-                padding: 0.25rem 0rem;
-                border-bottom: 0.2rem darkgray solid;
-                transition: 0.2s all; }
-                main #home .user-modal .modal-container form .form-container .form-control input:placeholder-shown + label {
-                  opacity: 0;
-                  visibility: hidden;
-                  transform: translateY(1rem); }
-                main #home .user-modal .modal-container form .form-container .form-control input:valid {
-                  border-bottom: 0.2rem #00c900 solid; }
-                main #home .user-modal .modal-container form .form-container .form-control input:invalid {
-                  border-bottom: 0.2rem #cc0000 solid; }
-              main #home .user-modal .modal-container form .form-container .form-control select {
-                border: none;
-                outline: none;
-                padding: 0.25rem 2rem 0.25rem 0rem;
-                border-bottom: 0.2rem darkgray solid;
-                cursor: pointer; }
-          main #home .user-modal .modal-container form .modal-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between; }
-            main #home .user-modal .modal-container form .modal-footer .btn {
-              background-color: darkblue;
-              color: white;
-              font-weight: bold;
-              border-radius: 3rem;
-              padding: 1.5rem 4rem;
-              margin: 3rem 0rem 0rem 0rem;
-              cursor: pointer;
-              border: none;
-              outline: none;
-              transition: 0.2s all ease-in-out;
-              box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem; }
-              main #home .user-modal .modal-container form .modal-footer .btn:hover {
-                box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
-              main #home .user-modal .modal-container form .modal-footer .btn:active {
-                transform: scale(0.97); }
-          main #home .user-modal .modal-container form div:nth-child(2) .form-control {
-            width: 85%; }
-            main #home .user-modal .modal-container form div:nth-child(2) .form-control input {
-              width: 100%; }
-        main #home .user-modal .modal-container .modal-close {
-          position: absolute;
-          top: 2rem;
-          right: 2rem; }
-          main #home .user-modal .modal-container .modal-close .react-icon {
-            font-size: 2.5rem;
+          align-items: center;
+          justify-content: space-between; }
+          #home .user-modal .modal-container form .modal-footer .btn {
+            background-color: darkblue;
+            color: white;
+            font-weight: bold;
+            border-radius: 3rem;
+            padding: 1.5rem 4rem;
+            margin: 3rem 0rem 0rem 0rem;
             cursor: pointer;
-            transition: 0.2s all; }
-            main #home .user-modal .modal-container .modal-close .react-icon:hover {
-              color: red; }
-        main #home .user-modal .modal-container h2 {
+            border: none;
+            outline: none;
+            transition: 0.2s all ease-in-out;
+            box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem; }
+            #home .user-modal .modal-container form .modal-footer .btn:hover {
+              box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
+            #home .user-modal .modal-container form .modal-footer .btn:active {
+              transform: scale(0.97); }
+        #home .user-modal .modal-container form div:nth-child(2) .form-control {
+          width: 85%; }
+          #home .user-modal .modal-container form div:nth-child(2) .form-control input {
+            width: 100%; }
+      #home .user-modal .modal-container .modal-close {
+        position: absolute;
+        top: 2rem;
+        right: 2rem; }
+        #home .user-modal .modal-container .modal-close .react-icon {
           font-size: 2.5rem;
-          margin-bottom: 3rem; }
-    main #home .user-modal.active {
-      opacity: 1;
-      visibility: visible; }
-  main .user-p.inactive.hidden {
-    visibility: hidden;
-    opacity: 0; }
-  main .user-btn.inactive {
-    visibility: hidden;
-    opacity: 0; }
+          cursor: pointer;
+          transition: 0.2s all; }
+          #home .user-modal .modal-container .modal-close .react-icon:hover {
+            color: red; }
+      #home .user-modal .modal-container h2 {
+        font-size: 2.5rem;
+        margin-bottom: 3rem; }
+  #home .user-modal.active {
+    opacity: 1;
+    visibility: visible; }
+
+.user-p.inactive.hidden {
+  visibility: hidden;
+  opacity: 0; }
+
+.user-btn.inactive {
+  visibility: hidden;
+  opacity: 0; }

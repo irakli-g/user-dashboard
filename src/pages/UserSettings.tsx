@@ -13,7 +13,7 @@ const UserSettings: React.FC = () => {
   const user = allUsers.find((item) => item.id === id);
 
   return (
-    <section id="user">
+    <main id="user">
       <header>
         <h1 className="header-title">User Setup</h1>
         <figure className="header-icon">
@@ -25,8 +25,7 @@ const UserSettings: React.FC = () => {
         <UserDetails {...(user as User)} />
         <UserPermissions {...(user as User)} />
       </div>
-      <footer></footer>
-    </section>
+    </main>
   );
 };
 
