@@ -69,6 +69,10 @@ interface ToggleUserPermissions {
   };
 }
 
+interface ToggleMenu {
+  type: "TOGGLE_MENU";
+}
+
 export type Actions =
   | DeleteUser
   | AddUser
@@ -80,4 +84,5 @@ export type Actions =
   | SortUsers
   | FilterUsers
   | UpdateUser
-  | ToggleUserPermissions;
+  | ToggleUserPermissions
+  | ToggleMenu;

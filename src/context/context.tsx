@@ -30,6 +30,7 @@ interface ContextInitialState extends InitialState {
     permissionId: string | number | undefined,
     groupPermissionStatus: boolean | undefined
   ) => void;
+  toggleMenu: () => void;
 }
 
 const getUsersFromStorage = () => {
@@ -46,6 +47,7 @@ const defaultState: InitialState = {
   allUsers: getUsersFromStorage(),
   filteredUsers: getUsersFromStorage(),
   isModalOpen: false,
+  menuOpen: false,
   message: {
     status: MessageStatus.EMPTY,
     content: "",
@@ -132,6 +134,10 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
+  const toggleMenu = () => {
+    dispatch({ type: "TOGGLE_MENU" });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -147,6 +153,7 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
         filterUsers,
         updateUser,
         toggleUserPermissions,
+        toggleMenu,
       }}
     >
       {children}

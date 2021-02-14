@@ -6,10 +6,11 @@ import { IoMdClose } from "react-icons/io";
 import { useAppContext } from "../context/context";
 import { v4 } from "uuid";
 import { MessageStatus } from "../reducer/reducer";
-import { permissions } from "../utils/permissions";
+import { usePermissionsContext } from "../context/permissions_context";
 
 const UserModal: React.FC = () => {
   const { isModalOpen, closeModal, addUser, activateMessage } = useAppContext();
+  const { userPermissions } = usePermissionsContext();
 
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
@@ -129,7 +130,7 @@ const UserModal: React.FC = () => {
                       role,
                       id: v4(),
                       status: true,
-                      permissions,
+                      permissions: userPermissions,
                       imgUrl: "",
                       superAdmin: false,
                     });

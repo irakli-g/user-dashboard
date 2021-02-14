@@ -1,6 +1,6 @@
 import { User } from "../reducer/reducer";
 import { v4 } from "uuid";
-import { permissions } from "./permissions";
+import { defaultState } from "../context/permissions_context";
 
 export const dummyUsers: User[] = [
   {
@@ -12,7 +12,7 @@ export const dummyUsers: User[] = [
     role: "admin",
     status: true,
     superAdmin: false,
-    permissions: permissions,
+    permissions: defaultState.userPermissions,
   },
   {
     firstName: "Irakli",
@@ -23,7 +23,7 @@ export const dummyUsers: User[] = [
     role: "user",
     status: false,
     superAdmin: false,
-    permissions: permissions,
+    permissions: defaultState.userPermissions,
   },
   {
     firstName: "Abishek",
@@ -34,7 +34,7 @@ export const dummyUsers: User[] = [
     role: "user",
     status: true,
     superAdmin: false,
-    permissions: permissions,
+    permissions: defaultState.userPermissions,
   },
   {
     firstName: "Alan",
@@ -45,7 +45,7 @@ export const dummyUsers: User[] = [
     role: "user",
     status: true,
     superAdmin: false,
-    permissions: permissions,
+    permissions: defaultState.userPermissions,
   },
   {
     firstName: "Salvador",
@@ -56,7 +56,7 @@ export const dummyUsers: User[] = [
     role: "admin",
     status: true,
     superAdmin: false,
-    permissions: permissions,
+    permissions: defaultState.userPermissions,
   },
   {
     firstName: "Blaise",
@@ -67,6 +67,6 @@ export const dummyUsers: User[] = [
     role: "admin",
     status: true,
     superAdmin: false,
-    permissions: permissions,
+    permissions: defaultState.userPermissions,
   },
 ];

@@ -1,9 +1,9 @@
 import React from "react";
-import { UserPermission } from "../../utils/permissions";
 import PermissionGroup from "./PermissionGroup";
+import { UserPermissions } from "../../reducer/permissions_reducer";
 
 interface Props {
-  permissions: UserPermission[][];
+  permissions: UserPermissions;
   id: string | number;
   status: boolean;
 }

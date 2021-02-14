@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { UserPermission } from "../../utils/permissions";
 import { BiChevronDown } from "react-icons/bi";
 import { useAppContext } from "../../context/context";
 import { MessageStatus } from "../../reducer/reducer";
 import { BsCircleFill } from "react-icons/bs";
-import { stat } from "fs";
+import { UserPermission } from "../../reducer/permissions_reducer";
 
 interface Props {
   permissions: UserPermission[];

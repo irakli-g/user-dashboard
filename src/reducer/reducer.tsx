@@ -1,5 +1,5 @@
 import { Actions } from "../utils/actions";
-import { UserPermissions } from "../utils/permissions";
+import { UserPermissions } from "./permissions_reducer";
 
 export enum MessageStatus {
   SUCCESS = "success",
@@ -31,6 +31,7 @@ export interface InitialState {
   allUsers: User[];
   filteredUsers: User[];
   isModalOpen: boolean;
+  menuOpen: boolean;
   message: {
     status: MessageStatus;
     content: string;
@@ -284,6 +285,12 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
       ...state,
       allUsers: tempUsers,
       filteredUsers: tempUsers,
+    };
+  }
+  if (action.type === "TOGGLE_MENU") {
+    return {
+      ...state,
+      menuOpen: !state.menuOpen,
     };
   }
   return {
