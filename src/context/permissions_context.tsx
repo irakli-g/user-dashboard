@@ -1,86 +1,31 @@
-import React, { useContext, useReducer } from "react";
+import React, { useContext, useEffect, useReducer } from "react";
 import { ReactNode } from "react";
 import {
   reducer,
   PermissionsInitialState,
 } from "../reducer/permissions_reducer";
-import { v4 } from "uuid";
+import { dummyPermissions } from "../utils/dummyPermissions";
 
-interface PermissionsContextInitialState extends PermissionsInitialState {}
+interface PermissionsContextInitialState extends PermissionsInitialState {
+  deletePermission: (id: string | number) => void;
+}
 
 const permissionsContext = React.createContext(
   {} as PermissionsContextInitialState
 );
 
+const getPermissionsFromStorage = () => {
+  let permissions = dummyPermissions;
+  if (typeof window !== "undefined") {
+    if (localStorage.getItem("permissions") !== null) {
+      permissions = JSON.parse(localStorage.getItem("permissions")!);
+    }
+  }
+  return permissions;
+};
+
 export const defaultState: PermissionsInitialState = {
-  userPermissions: [
-    [
-      {
-        status: false,
-        name: "Permission 1",
-        id: v4(),
-      },
-      {
-        status: false,
-        name: "Permission 2",
-        id: v4(),
-      },
-      {
-        status: true,
-        name: "Permission 3",
-        id: v4(),
-      },
-      {
-        status: true,
-        name: "Permission 4",
-        id: v4(),
-      },
-      {
-        status: false,
-        name: "Permission 5",
-        id: v4(),
-      },
-    ],
-    [
-      {
-        status: false,
-        name: "Permission 6",
-        id: v4(),
-      },
-      {
-        status: false,
-        name: "Permission 7",
-        id: v4(),
-      },
-      {
-        status: true,
-        name: "Permission 8",
-        id: v4(),
-      },
-      {
-        status: true,
-        name: "Permission 9",
-        id: v4(),
-      },
-      {
-        status: false,
-        name: "Permission 10",
-        id: v4(),
-      },
-    ],
-    [
-      {
-        status: true,
-        name: "Permission 11",
-        id: v4(),
-      },
-      {
-        status: false,
-        name: "Permission 12",
-        id: v4(),
-      },
-    ],
-  ],
+  userPermissions: getPermissionsFromStorage(),
 };
 
 export const PermissionsContextProvider = ({
@@ -89,10 +34,25 @@ export const PermissionsContextProvider = ({
   children: ReactNode;
 }) => {
   const [state, dispatch] = useReducer(reducer, defaultState);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        "permissions",
+        JSON.stringify(state.userPermissions)
+      );
+    }
+  }, [state.userPermissions]);
+
+  const deletePermission = (id: string | number) => {
+    dispatch({ type: "DELETE_PERMISSION", payload: { id } });
+  };
+
   return (
     <permissionsContext.Provider
       value={{
         ...state,
+        deletePermission,
       }}
     >
       {children}

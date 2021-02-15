@@ -7,10 +7,13 @@ import Message from "./components/Message";
 import Permissions from "./pages/Permissions";
 import Menu from "./components/Menu";
 import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const App: React.FC = () => {
   return (
     <>
+      <Header />
       <Menu />
       <Message />
       <Sidebar />
@@ -19,6 +22,7 @@ const App: React.FC = () => {
         <Route path="/user/:id" element={<UserSettings />} />
         <Route path="/permissions" element={<Permissions />} />
       </Routes>
+      <Footer />
     </>
   );
 };

@@ -16,6 +16,15 @@ export const reducer = (
   state: PermissionsInitialState,
   action: PermissionsActions
 ): PermissionsInitialState => {
+  if (action.type === "DELETE_PERMISSION") {
+    let tempPermissions = state.userPermissions.map((item) => {
+      return item.filter((permission) => permission.id !== action.payload.id);
+    });
+    return {
+      ...state,
+      userPermissions: tempPermissions,
+    };
+  }
   return {
     ...state,
   };

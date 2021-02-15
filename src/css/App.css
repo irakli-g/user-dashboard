@@ -35,7 +35,7 @@ body {
 
 .sidebar {
   position: fixed;
-  z-index: 999;
+  z-index: 99;
   background-color: white;
   transition: 0.2s all ease-in-out;
   width: 100%;
@@ -54,7 +54,7 @@ body {
       cursor: pointer;
       font-size: 2.5rem;
       transition: 0.2s color;
-      margin: 0.5rem 1rem 0 auto; }
+      margin: 0.5rem 2rem 0 auto; }
       .sidebar .sidebar-close .react-icon:hover {
         color: red; }
   .sidebar nav ul {
@@ -140,60 +140,54 @@ body {
     .message-modal.success {
       transform: translateX(-1rem); } }
 
-#user,
-#home {
-  background-color: #f0f0f0; }
-  #user header,
-  #home header {
-    background-color: white;
-    padding: 4rem 0rem;
+header {
+  background-color: white;
+  padding: 4rem 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: relative;
+  box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
+  header h1 {
+    font-size: 3rem; }
+  header .header-icon {
+    position: absolute;
+    left: 15%;
+    bottom: -20%;
+    z-index: 2;
+    background-color: #0000c7;
+    border-radius: 50%;
+    width: 6.5rem;
+    height: 6.5rem;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    position: relative;
-    box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
-    #user header h1,
-    #home header h1 {
-      font-size: 3rem; }
-    #user header .header-icon,
-    #home header .header-icon {
-      position: absolute;
-      left: 15%;
-      bottom: -20%;
-      z-index: 2;
-      background-color: #0000c7;
-      border-radius: 50%;
-      width: 6.5rem;
-      height: 6.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    justify-content: center;
+    cursor: pointer; }
+    header .header-icon .react-icon {
+      font-size: 3.5rem;
+      color: white;
       cursor: pointer; }
-      #user header .header-icon .react-icon,
-      #home header .header-icon .react-icon {
-        font-size: 3.5rem;
-        color: white;
-        cursor: pointer; }
 
-#user header h1 {
+.user-header h1 {
   margin: 0 auto 0 40rem; }
   @media (max-width: 1300px) {
-    #user header h1 {
+    .user-header h1 {
       margin: 0 auto 0 30rem; } }
   @media (max-width: 800px) {
-    #user header h1 {
+    .user-header h1 {
       margin: 0 auto 0 20rem; } }
   @media (max-width: 450px) {
-    #user header h1 {
+    .user-header h1 {
       margin: 0 auto 0 15rem; } }
   @media (max-width: 350px) {
-    #user header h1 {
+    .user-header h1 {
       margin: 0 auto 0 10rem; } }
-#user header .header-icon {
+.user-header .header-icon {
   background-color: lightgray;
   cursor: default; }
-  #user header .header-icon .react-icon {
+  .user-header .header-icon .react-icon {
     cursor: default; }
+
 #user .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -572,35 +566,36 @@ body {
           #user .container .user-permissions .permissions-container ul .li-container li p span {
             font-weight: 350; }
 
+@media (max-width: 600px) {
+  .home-header {
+    padding-bottom: 6rem; } }
+@media (max-width: 400px) {
+  .home-header {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 4rem; }
+    .home-header h1 {
+      margin-bottom: 2rem; } }
+.home-header .form-control {
+  display: flex;
+  align-items: center;
+  border-bottom: 0.2rem darkgray solid;
+  padding-bottom: 0.2rem; }
+  .home-header .form-control .react-icon {
+    font-size: 2rem;
+    margin-bottom: 0.2rem;
+    cursor: pointer;
+    transition: 0.2s all; }
+    .home-header .form-control .react-icon:hover {
+      color: #0000c7; }
+  .home-header .form-control input {
+    border: none;
+    outline: none;
+    padding: 0.2rem;
+    font-style: italic; }
+
 #home {
   position: relative; }
-  @media (max-width: 600px) {
-    #home header {
-      padding-bottom: 6rem; } }
-  @media (max-width: 400px) {
-    #home header {
-      display: flex;
-      flex-direction: column;
-      padding-bottom: 4rem; }
-      #home header h1 {
-        margin-bottom: 2rem; } }
-  #home header .form-control {
-    display: flex;
-    align-items: center;
-    border-bottom: 0.2rem darkgray solid;
-    padding-bottom: 0.2rem; }
-    #home header .form-control .react-icon {
-      font-size: 2rem;
-      margin-bottom: 0.2rem;
-      cursor: pointer;
-      transition: 0.2s all; }
-      #home header .form-control .react-icon:hover {
-        color: #0000c7; }
-    #home header .form-control input {
-      border: none;
-      outline: none;
-      padding: 0.2rem;
-      font-style: italic; }
   #home .container {
     width: 100%;
     min-height: 50rem;
@@ -809,12 +804,11 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: transparent;
     z-index: 99;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem;
     opacity: 0;
     visibility: hidden;
     transition: 0.1s all ease-in-out; }
@@ -930,3 +924,71 @@ body {
 .user-btn.inactive {
   visibility: hidden;
   opacity: 0; }
+
+#permissions {
+  padding: 5rem 10rem; }
+  #permissions .permissions-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 3rem; }
+    #permissions .permissions-container .permissions-group {
+      list-style: none;
+      padding: 2rem 4rem;
+      border-radius: 3rem;
+      min-height: 20rem;
+      overflow-y: auto;
+      box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem, rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem; }
+      #permissions .permissions-container .permissions-group h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem; }
+      #permissions .permissions-container .permissions-group .li-container .permission {
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0.7rem 0rem; }
+        #permissions .permissions-container .permissions-group .li-container .permission .permission-btn.active {
+          background-color: #add8e6; }
+        #permissions .permissions-container .permissions-group .li-container .permission .permission-btn.inactive {
+          background-color: #f08080; }
+        #permissions .permissions-container .permissions-group .li-container .permission .permission-btn {
+          width: 5rem;
+          padding: 1.2rem;
+          box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem;
+          border-radius: 3rem;
+          cursor: pointer;
+          position: relative;
+          outline: none;
+          border: none; }
+          #permissions .permissions-container .permissions-group .li-container .permission .permission-btn .btn.active {
+            background-color: #0389b6;
+            transform: translateX(2.5rem); }
+          #permissions .permissions-container .permissions-group .li-container .permission .permission-btn .btn.inactive {
+            background-color: #cc0000;
+            transform: translateX(0rem); }
+          #permissions .permissions-container .permissions-group .li-container .permission .permission-btn .btn {
+            position: absolute;
+            padding: 1.2rem;
+            top: 0;
+            left: 0;
+            transition: 0.2s all;
+            border-radius: 50%;
+            border: none;
+            outline: none;
+            cursor: pointer; }
+        #permissions .permissions-container .permissions-group .li-container .permission p {
+          display: flex;
+          justify-content: space-between;
+          align-items: center; }
+          #permissions .permissions-container .permissions-group .li-container .permission p .react-icon {
+            margin-right: 1rem;
+            font-size: 0.7rem; }
+          #permissions .permissions-container .permissions-group .li-container .permission p span {
+            font-weight: 350; }
+          #permissions .permissions-container .permissions-group .li-container .permission p .react-icon.trash {
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 1rem;
+            transition: 0.2s all; }
+            #permissions .permissions-container .permissions-group .li-container .permission p .react-icon.trash:hover {
+              color: red; }

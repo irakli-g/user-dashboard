@@ -6,7 +6,7 @@ import {
   reducer,
   User,
 } from "../reducer/reducer";
-import { dummyUsers } from "../utils/dummyData";
+import { dummyUsers } from "../utils/dummyUsers";
 
 interface ContextInitialState extends InitialState {
   addUser: (values: User) => void;
