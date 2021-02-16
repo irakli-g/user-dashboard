@@ -3,12 +3,9 @@ import { BsCircleFill } from "react-icons/bs";
 import { UserPermission } from "../../reducer/permissions_reducer";
 import { FaTrash } from "react-icons/fa";
 import { usePermissionsContext } from "../../context/permissions_context";
-import { useAppContext } from "../../context/context";
-import { MessageStatus } from "../../reducer/reducer";
 
 const Permission: React.FC<UserPermission> = (props) => {
-  const { deletePermission } = usePermissionsContext();
-  const { activateMessage } = useAppContext();
+  const { openPermissionsModal } = usePermissionsContext();
 
   return (
     <li className="permission">
@@ -21,11 +18,7 @@ const Permission: React.FC<UserPermission> = (props) => {
         <FaTrash
           className="react-icon trash"
           onClick={() => {
-            deletePermission(props.id);
-            activateMessage(
-              MessageStatus.WARNING,
-              "Permission has been successfully deleted."
-            );
+            openPermissionsModal(props.id);
           }}
         />
       </p>

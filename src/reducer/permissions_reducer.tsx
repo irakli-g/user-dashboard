@@ -10,6 +10,10 @@ export type UserPermissions = UserPermission[][];
 
 export interface PermissionsInitialState {
   userPermissions: UserPermissions;
+  permissionsModal: boolean;
+  permissionToDelete: {
+    id: string | number;
+  } | null;
 }
 
 export const reducer = (
@@ -23,6 +27,30 @@ export const reducer = (
     return {
       ...state,
       userPermissions: tempPermissions,
+      permissionToDelete: null,
+    };
+  }
+  if (action.type === "OPEN_PERMISSIONS_MODAL") {
+    if (action.payload?.id) {
+      return {
+        ...state,
+        permissionsModal: true,
+        permissionToDelete: {
+          ...state.permissionToDelete,
+          id: action.payload.id,
+        },
+      };
+    } else {
+      return {
+        ...state,
+        permissionsModal: true,
+      };
+    }
+  }
+  if (action.type === "CLOSE_PERMISSIONS_MODAL") {
+    return {
+      ...state,
+      permissionsModal: false,
     };
   }
   return {

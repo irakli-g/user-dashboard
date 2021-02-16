@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const Header: React.FC = () => {
   const { pathname } = useLocation();
-  const { openModal, filterUsers } = useAppContext();
+  const { openUserModal, filterUsers } = useAppContext();
   const navigate = useNavigate();
 
   if (pathname.includes("permissions")) {
@@ -48,8 +48,8 @@ const Header: React.FC = () => {
         />
         <BiSearch className="react-icon search" />
       </div>
-      <figure className="header-icon" onClick={openModal}>
-        <BsPlus className="react-icon plus" onClick={openModal} />
+      <figure className="header-icon" onClick={openUserModal}>
+        <BsPlus className="react-icon plus" onClick={openUserModal} />
       </figure>
     </header>
   );

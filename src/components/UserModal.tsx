@@ -9,7 +9,12 @@ import { MessageStatus } from "../reducer/reducer";
 import { usePermissionsContext } from "../context/permissions_context";
 
 const UserModal: React.FC = () => {
-  const { isModalOpen, closeModal, addUser, activateMessage } = useAppContext();
+  const {
+    isModalOpen,
+    closeUserModal,
+    addUser,
+    activateMessage,
+  } = useAppContext();
   const { userPermissions } = usePermissionsContext();
 
   const [firstName, setFirstName] = useState<string>("");
@@ -17,7 +22,6 @@ const UserModal: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [role, setRole] = useState("admin");
 
-  // Regex validation for form
   const emailRegex: RegExp = /^[a-z0-9\.-]+@[a-z0-9]{2,}\.[a-z]{2,5}(\.[a-z]{2,5})?$/i;
   const lettersRegex: RegExp = /^[a-z\s]+$/i;
 
@@ -29,7 +33,7 @@ const UserModal: React.FC = () => {
           <IoMdClose
             className="react-icon close"
             onClick={() => {
-              closeModal();
+              closeUserModal();
               setFirstName("");
               setLastName("");
               setEmail("");

@@ -10,8 +10,8 @@ import { dummyUsers } from "../utils/dummyUsers";
 
 interface ContextInitialState extends InitialState {
   addUser: (values: User) => void;
-  openModal: () => void;
-  closeModal: () => void;
+  openUserModal: () => void;
+  closeUserModal: () => void;
   activateMessage: (status: MessageStatus, content: string) => void;
   clearMessage: () => void;
   deleteUser: (id: string | number) => void;
@@ -83,11 +83,11 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
     dispatch({ type: "DELETE_USER", payload: { id } });
   };
 
-  const openModal = () => {
-    dispatch({ type: "OPEN_MODAL" });
+  const openUserModal = () => {
+    dispatch({ type: "OPEN_USER_MODAL" });
   };
-  const closeModal = () => {
-    dispatch({ type: "CLOSE_MODAL" });
+  const closeUserModal = () => {
+    dispatch({ type: "CLOSE_USER_MODAL" });
   };
 
   const activateMessage = (status: MessageStatus, content: string) => {
@@ -143,8 +143,8 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
       value={{
         ...state,
         addUser,
-        openModal,
-        closeModal,
+        openUserModal,
+        closeUserModal,
         activateMessage,
         clearMessage,
         deleteUser,

@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import { useAppContext } from "../context/context";
 import { useNavigate } from "react-router-dom";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { usePermissionsContext } from "../context/permissions_context";
 
 const Sidebar: React.FC = () => {
-  const { menuOpen, toggleMenu } = useAppContext();
+  const { menuOpen, toggleMenu, closeUserModal } = useAppContext();
+  const { closePermissionsModal } = usePermissionsContext();
   const navigate = useNavigate();
 
   return (
@@ -23,6 +25,11 @@ const Sidebar: React.FC = () => {
                 key={id}
                 onClick={() => {
                   navigate(path, { replace: true });
+                  if (path.includes("permissions")) {
+                    closeUserModal();
+                  } else if (path === "/") {
+                    closePermissionsModal();
+                  }
                 }}
               >
                 {icon}

@@ -24,12 +24,12 @@ interface ClearMessage {
   type: "CLEAR_MESSAGE";
 }
 
-interface OpenModal {
-  type: "OPEN_MODAL";
+interface OpenUserModal {
+  type: "OPEN_USER_MODAL";
 }
 
-interface ClosseModal {
-  type: "CLOSE_MODAL";
+interface CloseUserModal {
+  type: "CLOSE_USER_MODAL";
 }
 
 interface ToggleUserStatus {
@@ -78,8 +78,8 @@ export type Actions =
   | AddUser
   | ActivateMessage
   | ClearMessage
-  | OpenModal
-  | ClosseModal
+  | OpenUserModal
+  | CloseUserModal
   | ToggleUserStatus
   | SortUsers
   | FilterUsers

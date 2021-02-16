@@ -60,7 +60,7 @@ export const dummyUsers: User[] = [
   },
   {
     firstName: "Blaise",
-    lastName: "Pascla",
+    lastName: "Pascal",
     email: "b.pascal@gmail.com",
     id: v4(),
     imgUrl: "",

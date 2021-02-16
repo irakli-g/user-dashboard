@@ -8,6 +8,8 @@ import { dummyPermissions } from "../utils/dummyPermissions";
 
 interface PermissionsContextInitialState extends PermissionsInitialState {
   deletePermission: (id: string | number) => void;
+  openPermissionsModal: (id?: string | number) => void;
+  closePermissionsModal: () => void;
 }
 
 const permissionsContext = React.createContext(
@@ -26,6 +28,8 @@ const getPermissionsFromStorage = () => {
 
 export const defaultState: PermissionsInitialState = {
   userPermissions: getPermissionsFromStorage(),
+  permissionsModal: false,
+  permissionToDelete: null,
 };
 
 export const PermissionsContextProvider = ({
@@ -48,11 +52,21 @@ export const PermissionsContextProvider = ({
     dispatch({ type: "DELETE_PERMISSION", payload: { id } });
   };
 
+  const openPermissionsModal = (id?: string | number) => {
+    dispatch({ type: "OPEN_PERMISSIONS_MODAL", payload: { id } });
+  };
+
+  const closePermissionsModal = () => {
+    dispatch({ type: "CLOSE_PERMISSIONS_MODAL" });
+  };
+
   return (
     <permissionsContext.Provider
       value={{
         ...state,
         deletePermission,
+        openPermissionsModal,
+        closePermissionsModal,
       }}
     >
       {children}

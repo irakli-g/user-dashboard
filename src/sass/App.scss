@@ -29,6 +29,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 450px) {
+    width: 5rem;
+    height: 5rem;
+  }
+  @media (max-width: 350px) {
+    left: 1rem;
+  }
   & .react-icon {
     font-size: 3rem;
     color: white;
@@ -62,6 +69,10 @@ body {
       font-size: 2.5rem;
       transition: 0.2s color;
       margin: 0.5rem 2rem 0 auto;
+      @media (max-width: 450px) {
+        margin: 0.5rem 0.5rem 0 auto;
+        font-size: 3rem;
+      }
       &:hover {
         color: red;
       }
@@ -784,11 +795,14 @@ header {
     opacity: 0;
     visibility: hidden;
     transition: 0.1s all ease-in-out;
+    background-color: rgba(black, 0.4);
     & .modal-container {
       background-color: white;
       padding: 5rem 6rem;
       position: fixed;
       top: 15rem;
+      transform: scale(0.9);
+      transition: 0.2s transform;
       @media (max-width: 600px) {
         width: 80%;
       }
@@ -902,6 +916,9 @@ header {
   & .user-modal.active {
     opacity: 1;
     visibility: visible;
+    & .modal-container {
+      transform: scale(1);
+    }
   }
 }
 .user-p.inactive.hidden {
@@ -915,10 +932,123 @@ header {
 
 #permissions {
   padding: 5rem 10rem;
+  position: relative;
+  background-color: #f0f0f0;
+  min-height: 50rem;
+  @media (max-width: 1300px) {
+    padding: 5rem;
+  }
+  @media (max-width: 1150px) {
+    padding: 5rem 2rem;
+  }
+  @media (max-width: 1050px) {
+    padding: 5rem 20rem;
+  }
+  @media (max-width: 900px) {
+    padding: 5rem 15rem;
+  }
+  @media (max-width: 750px) {
+    padding: 5rem 10rem;
+  }
+  @media (max-width: 600px) {
+    padding: 5rem;
+  }
+  @media (max-width: 450px) {
+    padding: 5rem 2rem;
+  }
+  @media (max-width: 350px) {
+    padding: 5rem 1rem;
+  }
+  & .permissions-modal {
+    position: absolute;
+    background-color: rgba(black, 0.4);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 98;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.2s all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & .permissions-modal-container {
+      background-color: white;
+      padding: 4rem 5rem;
+      width: 40vw;
+      transition: 0.2s all ease-out;
+      transform: scale(0.9);
+      position: fixed;
+      top: 20rem;
+      @media (max-width: 1300px) {
+        width: 50vw;
+      }
+      @media (max-width: 1100px) {
+        width: 60vw;
+      }
+      @media (max-width: 700px) {
+        width: 70vw;
+      }
+      @media (max-width: 550px) {
+        width: 90vw;
+      }
+      @media (max-width: 450px) {
+        padding: 4rem 2rem;
+      }
+      & figure {
+        display: flex;
+        & .react-icon {
+          font-size: 3rem;
+          margin: 1rem 0.5rem 1rem auto;
+          cursor: pointer;
+          transition: 0.2s color;
+          &:hover {
+            color: rgb(212, 0, 0);
+          }
+        }
+      }
+      & .permissions-modal-content {
+        & h2 {
+          font-size: 3rem;
+          font-weight: 400;
+          display: flex;
+          align-items: center;
+          & .react-icon {
+            color: rgb(212, 0, 0);
+            margin-left: 1rem;
+          }
+          @media (max-width: 450px) {
+            font-size: 2.5rem;
+          }
+        }
+        & p {
+          margin: 1rem 0rem;
+          font-size: 1.6rem;
+        }
+        & .btn {
+          @include btn(1.5rem 3rem, 2rem 0rem 0rem 0rem);
+          background-color: rgb(212, 0, 0);
+        }
+      }
+    }
+  }
+  & .permissions-modal.active {
+    visibility: visible;
+    opacity: 1;
+    & .permissions-modal-container {
+      transform: scale(1);
+    }
+  }
   & .permissions-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 3rem;
+    @media (max-width: 1050px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, 1fr);
+      row-gap: 2rem;
+    }
     & .permissions-group {
       list-style: none;
       padding: 2rem 4rem;
@@ -927,6 +1057,7 @@ header {
       overflow-y: auto;
       box-shadow: rgba(206, 206, 206, 0.8) 0rem 0.4rem 1.6rem,
         rgba(228, 228, 228, 0.8) 0rem 0.8rem 2.4rem;
+      background-color: white;
       & h2 {
         font-size: 2.5rem;
         margin-bottom: 1rem;

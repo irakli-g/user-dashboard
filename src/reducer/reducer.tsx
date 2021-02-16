@@ -40,13 +40,13 @@ export interface InitialState {
 }
 
 export const reducer = (state: InitialState, action: Actions): InitialState => {
-  if (action.type === "OPEN_MODAL") {
+  if (action.type === "OPEN_USER_MODAL") {
     return {
       ...state,
       isModalOpen: true,
     };
   }
-  if (action.type === "CLOSE_MODAL") {
+  if (action.type === "CLOSE_USER_MODAL") {
     return {
       ...state,
       isModalOpen: false,
